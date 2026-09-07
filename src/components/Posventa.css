@@ -1,0 +1,36 @@
+.posventa {
+  padding: 120px 0;
+  background: var(--bg-elevated);
+}
+
+.posventa__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.posventa__card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+}
+
+.posventa__card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.posventa__card p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 780px) {
+  .posventa__grid {
+    grid-template-columns: 1fr;
+  }
+}
