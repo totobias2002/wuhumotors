@@ -33,18 +33,17 @@
   height: 100%;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 120px;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 4vw 56px;
 }
 
-.hero-carousel__text {
+/* left: marketing copy */
+.hero-carousel__copy {
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 640px;
-  width: 100%;
+  left: 4vw;
+  bottom: 56px;
+  max-width: 620px;
   opacity: 0;
   transform: translateY(16px);
   pointer-events: none;
@@ -53,81 +52,86 @@
   cursor: pointer;
 }
 
-.hero-carousel__text.is-active {
+.hero-carousel__copy.is-active {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
   position: relative;
+  left: auto;
+  bottom: auto;
 }
 
-.hero-carousel__badge {
-  display: inline-block;
-  padding: 6px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--accent, #2f6bff);
-  color: var(--accent, #2f6bff);
-  background: rgba(0, 0, 0, 0.35);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 20px;
-}
-
-.hero-carousel__text h1 {
-  text-align: center;
-}
-
-.hero-carousel__graphic {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-}
-
-.hero-carousel__logo-img {
-  max-width: 260px;
-  width: 40%;
-  height: auto;
-  margin: 0 auto;
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45));
-}
-
-.hero-carousel__text-img {
-  max-width: 520px;
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-  filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.45));
-}
-
-@media (max-width: 780px) {
-  .hero-carousel__logo-img {
-    max-width: 170px;
-  }
-
-  .hero-carousel__text-img {
-    max-width: 320px;
-  }
-}
-
-.hero-carousel__text h1 {
+.hero-carousel__copy h1 {
   color: #fff;
-  font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+  text-align: left;
+  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
   font-weight: 800;
-  line-height: 1.15;
+  font-style: italic;
+  line-height: 1.12;
   letter-spacing: -0.01em;
-  margin-bottom: 0;
+  margin: 0;
   text-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
 }
 
-.hero-carousel__text p {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  margin-bottom: 32px;
-  max-width: 480px;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
+/* right: model wordmark */
+.hero-carousel__model {
+  position: absolute;
+  right: 4vw;
+  bottom: 56px;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hero-carousel__model.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  position: relative;
+  right: auto;
+  bottom: auto;
+}
+
+.hero-carousel__tagline-img {
+  display: block;
+  max-width: 560px;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.45));
+}
+
+.hero-carousel__logo-img {
+  display: block;
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  margin-left: auto;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45));
+}
+
+.hero-carousel__model-text {
+  display: block;
+  color: #fff;
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+
+@media (max-width: 780px) {
+  .hero-carousel__tagline-img {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .hero-carousel__logo-img {
+    max-width: 220px;
+    margin: 0 auto;
+  }
 }
 
 .hero-carousel__arrow {
@@ -165,7 +169,7 @@
 .hero-carousel__dots {
   position: absolute;
   z-index: 3;
-  bottom: 40px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -190,7 +194,7 @@
 .hero-carousel__scroll {
   position: absolute;
   z-index: 3;
-  bottom: 36px;
+  bottom: 16px;
   right: 32px;
   width: 26px;
   height: 42px;
@@ -221,7 +225,29 @@
   }
 
   .hero-carousel__content {
-    padding-bottom: 100px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 20px 96px;
+    gap: 14px;
+  }
+
+  .hero-carousel__copy,
+  .hero-carousel__model {
+    left: auto;
+    right: auto;
+    bottom: auto;
+    position: relative;
+    text-align: center;
+  }
+
+  .hero-carousel__copy.is-active,
+  .hero-carousel__model.is-active {
+    position: relative;
+  }
+
+  .hero-carousel__copy h1 {
+    text-align: center;
   }
 
   .hero-carousel__arrow {

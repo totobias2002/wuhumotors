@@ -35,44 +35,44 @@ export default function HeroCarousel() {
         <div
           key={slide.id}
           className={`hero-carousel__slide ${i === index ? 'is-active' : ''}`}
-          style={{ backgroundImage: `url(${slide.image})` }}
+          style={{
+            backgroundImage: `url(${slide.image})`,
+            backgroundPosition: `${slide.focalX ?? 50}% bottom`,
+          }}
           aria-hidden={i !== index}
         >
           <div className="hero-carousel__scrim" />
         </div>
       ))}
 
-      <div className="container hero-carousel__content">
+      <div className="hero-carousel__content">
         {heroSlides.map((slide, i) => (
           <a
-            key={slide.id}
+            key={`copy-${slide.id}`}
             href={slide.ctaHref}
-            className={`hero-carousel__text ${i === index ? 'is-active' : ''}`}
+            className={`hero-carousel__copy ${i === index ? 'is-active' : ''}`}
             style={{ '--accent': slide.accent }}
             aria-label={`Ver ${slide.badge}`}
           >
-            {slide.logoImage || slide.textImage ? (
-              <div className="hero-carousel__graphic">
-                {slide.logoImage && (
-                  <img
-                    src={slide.logoImage}
-                    alt={slide.badge}
-                    className="hero-carousel__logo-img"
-                  />
-                )}
-                {slide.textImage && (
-                  <img
-                    src={slide.textImage}
-                    alt={slide.title}
-                    className="hero-carousel__text-img"
-                  />
-                )}
-              </div>
+            {slide.textImage ? (
+              <img src={slide.textImage} alt={slide.title} className="hero-carousel__tagline-img" />
             ) : (
-              <>
-                <span className="hero-carousel__badge">{slide.badge}</span>
-                <h1>{slide.title}</h1>
-              </>
+              <h1>{slide.title}</h1>
+            )}
+          </a>
+        ))}
+
+        {heroSlides.map((slide, i) => (
+          <a
+            key={`model-${slide.id}`}
+            href={slide.ctaHref}
+            className={`hero-carousel__model ${i === index ? 'is-active' : ''}`}
+            aria-label={`Ver ${slide.badge}`}
+          >
+            {slide.logoImage ? (
+              <img src={slide.logoImage} alt={slide.badge} className="hero-carousel__logo-img" />
+            ) : (
+              <span className="hero-carousel__model-text">{slide.badge}</span>
             )}
           </a>
         ))}

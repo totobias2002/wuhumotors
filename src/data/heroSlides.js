@@ -2,6 +2,7 @@ export const heroSlides = [
   {
     id: 'tiggo8',
     image: '/hero/tiggo8.jpg',
+    focalX: 48,
     badge: 'Tiggo 8 Pro',
     title: 'El SUV que no pasa desapercibido',
     subtitle: 'Diseño premium, 7 plazas y toda la tecnología Chery.',
@@ -13,15 +14,18 @@ export const heroSlides = [
   {
     id: 'tiggo7-csh',
     image: '/hero/tiggo7-csh.jpg',
+    focalX: 49,
     badge: 'Tiggo 7 CSH',
     title: 'Súper tecnología híbrida, sin dudas',
     subtitle: 'Hasta 1200 km de autonomía combinada y recarga en 20 minutos.',
     ctaHref: '#modelos',
     accent: '#7c5cff',
+    logoImage: '/hero/tiggo7csh-text.png',
   },
   {
     id: 'tiggo7-hybrid',
     image: '/hero/tiggo7-hybrid.jpg',
+    focalX: 45,
     badge: 'Tiggo 7 Pro Hybrid',
     title: 'El SUV híbrido que redefine el segmento',
     subtitle: 'Motor 1.5L Turbo híbrido con máxima eficiencia.',
@@ -33,6 +37,7 @@ export const heroSlides = [
   {
     id: 'tiggo4',
     image: '/hero/tiggo4.jpg',
+    focalX: 47,
     badge: 'Tiggo 4 Hybrid',
     title: 'Eficiencia híbrida sin resignar potencia',
     subtitle: 'El compacto ideal para la ciudad y la ruta.',
@@ -44,6 +49,7 @@ export const heroSlides = [
   {
     id: 'arrizo8',
     image: '/hero/arrizo8.jpg',
+    focalX: 47,
     badge: 'Arrizo 8 CSH',
     title: 'El primer híbrido enchufable de Chery',
     subtitle: 'Diseño deportivo y tecnología de punta en un sedán.',
