@@ -1,8 +1,8 @@
 .models {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  padding: 100px 0 clamp(12px, 2vh, 32px);
+  align-items: flex-start;
+  padding: 48px 0 clamp(12px, 2vh, 32px);
   background: linear-gradient(#9d9790 0%, #bdb7b1 85%);
   color: #262422;
 }
@@ -96,7 +96,7 @@
   max-height: 60vh;
   object-fit: contain;
   filter: drop-shadow(0 24px 32px rgba(0, 0, 0, 0.25));
-  animation: models-car-enter 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: models-car-enter 1s cubic-bezier(0.22, 1, 0.36, 1) both;
   will-change: transform, opacity;
 }
 
@@ -130,7 +130,7 @@
   max-width: 640px;
   margin: 0 auto;
   text-align: center;
-  animation: models-meta-enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+  animation: models-meta-enter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
 }
 
 .models__tagline {

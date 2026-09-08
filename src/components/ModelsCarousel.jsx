@@ -64,7 +64,7 @@ export default function ModelsCarousel() {
   return (
     <section id="modelos" className="models" ref={sectionRef}>
       <div className="container" ref={containerRef}>
-        <h3 className="models__line-title">{activeLineLabel}</h3>
+        <h3 className="models__line-title reveal">{activeLineLabel}</h3>
 
         <div className="models__line-tabs" role="tablist" aria-label="Línea de modelos">
           {modelLines.map((line) => (
@@ -122,7 +122,7 @@ export default function ModelsCarousel() {
           </dl>
         </div>
 
-        <a href="#contacto" className="models__explore">
+        <a href="mailto:contacto@wuhumotors.com.ar" className="models__explore">
           Explorar
         </a>
       </div>

@@ -6,7 +6,7 @@ const NAV_LINKS = [
   { label: 'Modelos', href: '#modelos', hasCaret: true },
   { label: 'Nosotros', href: '#nosotros', hasCaret: false },
   { label: 'Posventa', href: '#posventa', hasCaret: false },
-  { label: 'Lista de Precios', href: '#precios', hasCaret: false },
+  { label: 'Concesionarios', href: '#concesionarios', hasCaret: false },
 ];
 
 export default function Header() {

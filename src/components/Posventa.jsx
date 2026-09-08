@@ -1,41 +1,26 @@
-import './Posventa.css';
-
-const SERVICES = [
-  {
-    title: 'Service oficial',
-    desc: 'Mantenimiento con técnicos capacitados y repuestos originales Chery.',
-  },
-  {
-    title: 'Garantía y respaldo',
-    desc: 'Cobertura de fábrica gestionada directamente desde el concesionario.',
-  },
-  {
-    title: 'Turnos online',
-    desc: 'Coordiná tu service o revisión cuando más te convenga.',
-  },
-];
+import './SplitPanel.css';
 
 export default function Posventa() {
   return (
-    <section id="posventa" className="posventa">
-      <div className="container">
-        <p className="section-label">Posventa</p>
-        <h2 className="section-title">
-          Una experiencia diseñada para que siempre sea excepcional
+    <section id="posventa" className="split-panel">
+      <div
+        className="split-panel__media reveal"
+        style={{ backgroundImage: 'url(/sections/posventa.png)' }}
+      />
+      <div className="split-panel__copy">
+        <h2 className="reveal">
+          Servicio
+          <br />
+          <span>Postventa</span>
         </h2>
-        <p className="section-subtitle">
-          En Wuhu Motors te acompañamos después de la compra, con un servicio de
-          posventa pensado para cuidar tu Chery en cada etapa.
+        <p className="reveal reveal-delay-1">
+          Nuestro servicio de posventa está <strong>diseñado para asegurar</strong> que tu
+          experiencia sea siempre excepcional, brindándote la <strong>tranquilidad y el
+          soporte</strong> que merecés.
         </p>
-
-        <div className="posventa__grid">
-          {SERVICES.map((s) => (
-            <div key={s.title} className="posventa__card">
-              <h3>{s.title}</h3>
-              <p>{s.desc}</p>
-            </div>
-          ))}
-        </div>
+        <a href="tel:+5491155704430" className="split-panel__btn reveal reveal-delay-2">
+          Coordinar visita
+        </a>
       </div>
     </section>
   );

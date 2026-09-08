@@ -1,32 +1,26 @@
-import './Nosotros.css';
+import './SplitPanel.css';
 
 export default function Nosotros() {
   return (
-    <section id="nosotros" className="nosotros">
-      <div className="container nosotros__inner">
-        <div>
-          <p className="section-label">Nosotros</p>
-          <h2 className="section-title">Wuhu Motors, concesionario oficial Chery</h2>
-          <p className="section-subtitle">
-            Somos el punto de contacto directo con la marca en Argentina: asesoramiento
-            personalizado, financiación y una postventa pensada para acompañarte en
-            todo el ciclo de vida de tu vehículo.
-          </p>
-          <ul className="nosotros__list">
-            <li>Showroom con toda la gama Chery disponible para probar</li>
-            <li>Asesores especializados en cada modelo</li>
-            <li>Planes de financiación y toma de usados</li>
-          </ul>
-        </div>
-
-        <div className="nosotros__card">
-          <h3>Visitanos</h3>
-          <p className="nosotros__placeholder">Dirección a confirmar</p>
-          <p className="nosotros__placeholder">Lun a Sáb — horario a confirmar</p>
-          <a href="#contacto" className="btn btn-outline">
-            Cómo llegar
-          </a>
-        </div>
+    <section id="nosotros" className="split-panel split-panel--reverse">
+      <div
+        className="split-panel__media reveal"
+        style={{ backgroundImage: 'url(/sections/nosotros.png)' }}
+      />
+      <div className="split-panel__copy">
+        <h2 className="reveal">
+          Conocé
+          <br />
+          <span>Wuhu Motors</span>
+        </h2>
+        <p className="reveal reveal-delay-1">
+          Acercate a la <strong>calidad y el respaldo</strong> que solo te brinda nuestro{' '}
+          <strong>concesionario oficial Chery</strong>. Te esperamos para asesorarte
+          personalmente.
+        </p>
+        <a href="mailto:contacto@wuhumotors.com.ar" className="split-panel__btn reveal reveal-delay-2">
+          Ver más
+        </a>
       </div>
     </section>
   );
