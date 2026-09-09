@@ -4,6 +4,7 @@ import ModelsCarousel from './components/ModelsCarousel';
 import Posventa from './components/Posventa';
 import Nosotros from './components/Nosotros';
 import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
 import useReveal from './hooks/useReveal';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Nosotros />
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }

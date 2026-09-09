@@ -35,7 +35,10 @@ export default function HeroCarousel() {
         <div
           key={slide.id}
           className={`hero-carousel__slide ${i === index ? 'is-active' : ''}`}
-          style={{ backgroundImage: `url(${slide.image})` }}
+          style={{
+            backgroundImage: `url(${slide.image})`,
+            backgroundPosition: `${slide.focalX ?? 50}% top`,
+          }}
           aria-hidden={i !== index}
         >
           <div className="hero-carousel__scrim" />
