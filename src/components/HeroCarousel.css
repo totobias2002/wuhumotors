@@ -87,13 +87,7 @@
   width: 26px;
 }
 
-@media (max-width: 860px) {
-  .hero-carousel {
-    --header-h: 58px;
-  }
-}
-
-@media (max-width: 780px) {
+@media (max-width: 1024px) {
   .hero-carousel {
     aspect-ratio: auto;
     height: calc(100svh - var(--header-h));
@@ -108,12 +102,4 @@
 
   .hero-carousel__arrow--prev { left: 10px; }
   .hero-carousel__arrow--next { right: 10px; }
-
-  .hero-carousel__slide--contain-m {
-    background: #0a0a12;
-  }
-
-  .hero-carousel__slide--contain-m img {
-    object-fit: contain;
-  }
 }

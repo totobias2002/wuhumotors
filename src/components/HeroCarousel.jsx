@@ -1,18 +1,32 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { heroSlides } from '../data/heroSlides';
+import { heroSlidesDesktop, heroSlidesMobile, HERO_MOBILE_QUERY } from '../data/heroSlides';
 import './HeroCarousel.css';
 
 const AUTOPLAY_MS = 6000;
-const COUNT = heroSlides.length;
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() => window.matchMedia(HERO_MOBILE_QUERY).matches);
+  useEffect(() => {
+    const mq = window.matchMedia(HERO_MOBILE_QUERY);
+    const onChange = (e) => setIsMobile(e.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+  return isMobile;
+}
 
 export default function HeroCarousel() {
+  const isMobile = useIsMobile();
+  const slides = isMobile ? heroSlidesMobile : heroSlidesDesktop;
+  const count = slides.length;
+
   const [index, setIndex] = useState(0);
   const timerRef = useRef(null);
 
   const startAutoplay = useCallback(() => {
     clearInterval(timerRef.current);
-    timerRef.current = setInterval(() => setIndex((i) => (i + 1) % COUNT), AUTOPLAY_MS);
-  }, []);
+    timerRef.current = setInterval(() => setIndex((i) => (i + 1) % count), AUTOPLAY_MS);
+  }, [count]);
 
   useEffect(() => {
     startAutoplay();
@@ -20,24 +34,21 @@ export default function HeroCarousel() {
   }, [startAutoplay]);
 
   const goTo = (i) => {
-    setIndex(((i % COUNT) + COUNT) % COUNT);
+    setIndex(((i % count) + count) % count);
     startAutoplay();
   };
 
   return (
     <section id="inicio" className="hero-carousel">
-      {heroSlides.map((slide, i) => (
+      {slides.map((slide, i) => (
         <a
           key={slide.id}
           href="#contacto"
-          className={`hero-carousel__slide ${i === index ? 'is-active' : ''} ${slide.mobileFit === 'contain' ? 'hero-carousel__slide--contain-m' : ''}`}
+          className={`hero-carousel__slide ${i === index ? 'is-active' : ''}`}
           aria-hidden={i !== index}
           tabIndex={i === index ? 0 : -1}
         >
-          <picture>
-            <source media="(max-width: 780px)" srcSet={slide.mobile} />
-            <img src={slide.desktop} alt={slide.alt} loading={i === 0 ? 'eager' : 'lazy'} />
-          </picture>
+          <img src={slide.src} alt={slide.alt} loading={i === 0 ? 'eager' : 'lazy'} />
         </a>
       ))}
 
@@ -57,7 +68,7 @@ export default function HeroCarousel() {
       </button>
 
       <div className="hero-carousel__dots">
-        {heroSlides.map((slide, i) => (
+        {slides.map((slide, i) => (
           <button
             key={slide.id}
             className={i === index ? 'is-active' : ''}
