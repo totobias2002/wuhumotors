@@ -1,73 +1,24 @@
+// Gama y orden tal como figuran en el menu de chery.com.ar.
+// `officialUrl` apunta a la ficha oficial hasta que existan las paginas propias.
+const OFFICIAL = 'https://chery.com.ar';
+
 export const models = [
-  {
-    id: 'tiggo-2-pro-max',
-    line: 'tiggo',
-    name: 'Tiggo 2 Pro Max',
-    tagline: 'Compacto, ágil y con toda la tecnología Chery',
-    engine: '1.5L Turbo',
-    length: '4.200 mm',
-    wheelbase: '2.555 mm',
-    color: '#2f6bff',
-    image: '/models/model-tiggo2promax.png',
-  },
-  {
-    id: 'tiggo-4-csh',
-    line: 'tiggo',
-    name: 'Tiggo 4 CSH',
-    tagline: 'Eficiencia híbrida sin resignar potencia',
-    engine: 'Híbrido 1.5L',
-    length: '4.318 mm',
-    wheelbase: '2.610 mm',
-    color: '#1f9d6b',
-    image: '/models/model-tiggo4csh.png',
-  },
-  {
-    id: 'tiggo-7-pro-hybrid',
-    line: 'tiggo',
-    name: 'Tiggo 7 Pro Hybrid',
-    tagline: 'El SUV híbrido que redefine el segmento',
-    engine: 'Híbrido 1.5L Turbo',
-    length: '4.507 mm',
-    wheelbase: '2.672 mm',
-    color: '#7c5cff',
-    image: '/models/model-tiggo7prohybrid.png',
-  },
-  {
-    id: 'tiggo-7-csh',
-    line: 'tiggo',
-    name: 'Tiggo 7 CSH',
-    tagline: 'Súper tecnología híbrida, sin dudas',
-    engine: 'Chery Super Hybrid',
-    length: '4.500 mm',
-    wheelbase: '2.672 mm',
-    color: '#7c5cff',
-    image: '/models/model-tiggo7csh.png',
-  },
-  {
-    id: 'tiggo-8-pro',
-    line: 'tiggo',
-    name: 'Tiggo 8 Pro',
-    tagline: 'Bandera de la gama SUV, siete plazas premium',
-    engine: '2.0L Turbo',
-    length: '4.722 mm',
-    wheelbase: '2.710 mm',
-    color: '#ff6a3d',
-    image: '/models/model-tiggo8pro.png',
-  },
-  {
-    id: 'arrizo-8-csh',
-    line: 'arrizo',
-    name: 'Arrizo 8 CSH',
-    tagline: 'El primer híbrido enchufable de Chery',
-    engine: 'Chery Super Hybrid',
-    length: '4.816 mm',
-    wheelbase: '2.786 mm',
-    color: '#e63d6f',
-    image: '/models/model-arrizo8csh.png',
-  },
+  { id: 'tiggo-2-pro-max', line: 'tiggo', name: 'Tiggo 2 Pro Max', image: '/chery/models/tiggo2promax.png', officialUrl: `${OFFICIAL}/tiggo-2-pro-max/` },
+  { id: 'tiggo-4-pro', line: 'tiggo', name: 'Tiggo 4 Pro', image: '/chery/models/tiggo4pro.webp', officialUrl: `${OFFICIAL}/tiggo-4-pro/` },
+  { id: 'tiggo-4-csh', line: 'tiggo', name: 'Tiggo 4 CSH', image: '/chery/models/tiggo4hybrid.png', officialUrl: `${OFFICIAL}/tiggo-4-hybrid/` },
+  { id: 'tiggo-7-pro-hybrid', line: 'tiggo', name: 'Tiggo 7 Pro Hybrid', image: '/chery/models/tiggo7prohybrid.png', officialUrl: `${OFFICIAL}/tiggo-7-pro-hybrid/` },
+  { id: 'tiggo-7-csh', line: 'tiggo', name: 'Tiggo 7 CSH', image: '/chery/models/tiggo7csh.png', officialUrl: `${OFFICIAL}/tiggo-7-csh/` },
+  { id: 'tiggo-8-pro', line: 'tiggo', name: 'Tiggo 8 Pro', image: '/chery/models/tiggo8pro.png', officialUrl: `${OFFICIAL}/tiggo-8-pro/` },
+  { id: 'arrizo-8-csh', line: 'arrizo', name: 'Arrizo 8 CSH', image: '/chery/models/arrizo8csh.png', officialUrl: `${OFFICIAL}/arrizo8-csh/` },
+  { id: 'himla', line: 'himla', name: 'Himla', image: '/chery/models/himla.webp', officialUrl: `${OFFICIAL}/himla/` },
 ];
 
+// Las lineas se muestran con su logotipo (mismo PNG para el titulo grande y la pestana).
 export const modelLines = [
-  { id: 'tiggo', label: 'Tiggo' },
-  { id: 'arrizo', label: 'Arrizo' },
+  { id: 'tiggo', label: 'Tiggo', logo: '/chery/brand/line-tiggo.png', tabWidth: 92, titleWidth: 172 },
+  { id: 'arrizo', label: 'Arrizo', logo: '/chery/brand/line-arrizo.png', tabWidth: 100, titleWidth: 190 },
+  { id: 'himla', label: 'Himla', logo: '/chery/brand/line-himla.png', tabWidth: 74, titleWidth: 140 },
 ];
+
+export const PRICE_LIST_URL =
+  'https://chery.com.ar/wp-content/uploads/2026/10/20261006_CHERY-ARG-PUBLICA-N%C2%B014-OCT26-Segunda.pdf';

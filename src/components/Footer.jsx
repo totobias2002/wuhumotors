@@ -22,8 +22,8 @@ export default function Footer() {
             </a>
           ))}
           <a href="#posventa">Posventa</a>
-          <a href="#nosotros">Nosotros</a>
           <a href="#concesionarios">Concesionarios</a>
+          <a href="#contacto">Contacto</a>
         </div>
 
         <div className="footer__col">
@@ -53,6 +53,12 @@ export default function Footer() {
       <div className="container footer__bottom">
         <span>Wuhu Motors S.A. Concesionario Oficial de ZTY Motors Red Chery · CUIT 30-71917302-7</span>
         <span>Copyright ©{YEAR} | Todos los derechos reservados</span>
+      </div>
+
+      <div className="footer__corven">
+        <div className="container footer__corven-inner">
+          <img src="/chery/brand/corven.png" alt="Una marca representada por Grupo Corven" width="503" height="53" loading="lazy" />
+        </div>
       </div>
     </footer>
   );

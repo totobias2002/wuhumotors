@@ -1,51 +1,50 @@
+import { useState } from 'react';
+import { SUCURSALES } from '../data/sucursales';
+import './SplitPanel.css';
 import './Concesionarios.css';
 
-const SUCURSALES = [
-  { name: 'Almagro', address: 'Castro Barros 188' },
-  { name: 'Canning', address: 'Mariano Castex 1613' },
-  { name: 'Cruce Varela', address: 'Av. Calchaquí 332' },
-  { name: 'Villa Luro', address: 'Av. Rivadavia 10240' },
-  { name: 'Puerto Madero', address: 'Julieta Lanteri 1735' },
-];
-
 export default function Concesionarios() {
-  return (
-    <section id="concesionarios" className="concesionarios">
-      <div className="container">
-        <p className="section-label reveal">Concesionarios oficiales</p>
-        <h2 className="concesionarios__title reveal">
-          5 sucursales en <span>Buenos Aires</span>
-        </h2>
-        <p className="concesionarios__subtitle reveal reveal-delay-1">
-          Chery lleva 18 años en el país. Wuhu Motors lidera su expansión como
-          concesionario oficial, cada vez más cerca tuyo.
-        </p>
+  const [open, setOpen] = useState(false);
 
-        <div className="concesionarios__grid">
-          {SUCURSALES.map((s, i) => (
-            <div
-              key={s.name}
-              className={`concesionarios__card reveal reveal-delay-${Math.min(i + 1, 3)}`}
-            >
-              <span className="concesionarios__pin" aria-hidden="true" />
-              <div>
+  return (
+    <>
+      <section id="concesionarios" className="split-panel split-panel--reverse">
+        <div className="split-panel__media reveal" style={{ backgroundImage: 'url(/sections/nosotros.png)' }} />
+        <div className="split-panel__copy">
+          <h2 className="reveal">
+            Concesionarios
+            <br />
+            <span>Oficiales</span>
+          </h2>
+          <p className="reveal reveal-delay-1">
+            Acércate a la <strong>calidad y el respaldo</strong> que solo te brindan nuestros{' '}
+            <strong>Concesionarios Oficiales</strong>. Te esperamos para asesorarte{' '}
+            <strong>personalmente.</strong>
+          </p>
+          <button
+            type="button"
+            className="split-panel__btn reveal reveal-delay-2"
+            aria-expanded={open}
+            aria-controls="sucursales"
+            onClick={() => setOpen((o) => !o)}
+          >
+            {open ? 'Ver menos' : 'Ver más'}
+          </button>
+        </div>
+      </section>
+
+      {open && (
+        <section id="sucursales" className="sucursales">
+          <div className="container sucursales__grid">
+            {SUCURSALES.map((s) => (
+              <div key={s.name} className="sucursales__item">
                 <h3>{s.name}</h3>
                 <p>{s.address}</p>
               </div>
-            </div>
-          ))}
-          <a
-            href="tel:+541160016793"
-            className="concesionarios__card concesionarios__card--cta reveal reveal-delay-3"
-          >
-            <span className="concesionarios__pin concesionarios__pin--accent" aria-hidden="true" />
-            <div>
-              <h3>Contactanos</h3>
-              <p>11 6001-6793</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
+            ))}
+          </div>
+        </section>
+      )}
+    </>
   );
 }

@@ -2,8 +2,10 @@ import Header from './components/Header';
 import HeroCarousel from './components/HeroCarousel';
 import ModelsCarousel from './components/ModelsCarousel';
 import Posventa from './components/Posventa';
-import Nosotros from './components/Nosotros';
+import Concesionarios from './components/Concesionarios';
+import Contacto from './components/Contacto';
 import Footer from './components/Footer';
+import WhatsappButton from './components/WhatsappButton';
 import useReveal from './hooks/useReveal';
 
 function App() {
@@ -16,9 +18,11 @@ function App() {
         <HeroCarousel />
         <ModelsCarousel />
         <Posventa />
-        <Nosotros />
+        <Concesionarios />
+        <Contacto />
       </main>
       <Footer />
+      <WhatsappButton />
     </>
   );
 }

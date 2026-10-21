@@ -14,12 +14,12 @@ export default function Posventa() {
           <span>Postventa</span>
         </h2>
         <p className="reveal reveal-delay-1">
-          Nuestro servicio de posventa está <strong>diseñado para asegurar</strong> que tu
+          Nuestro servicio de postventa está <strong>diseñado para asegurar</strong> que tu
           experiencia sea siempre excepcional, brindándote la <strong>tranquilidad y el
-          soporte</strong> que merecés.
+          soporte</strong> que mereces.
         </p>
-        <a href="tel:+5491155704430" className="split-panel__btn reveal reveal-delay-2">
-          Coordinar visita
+        <a href="#contacto" className="split-panel__btn reveal reveal-delay-2">
+          Ver más
         </a>
       </div>
     </section>

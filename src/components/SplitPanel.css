@@ -1,6 +1,7 @@
 .split-panel {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* Chery: foto 60% / texto 40% (Posventa); texto 40% / foto 60% (Concesionarios) */
+  grid-template-columns: 3fr 2fr;
   min-height: 45vh;
   background: #4a453f;
   color: #fff;
@@ -8,7 +9,7 @@
 }
 
 .split-panel--reverse {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 3fr;
 }
 
 .split-panel--reverse .split-panel__media {
@@ -33,21 +34,22 @@
 }
 
 .split-panel__copy h2 {
-  font-size: clamp(1.9rem, 3.3vw, 2.6rem);
-  font-weight: 800;
-  line-height: 1.15;
+  font-size: clamp(1.9rem, 2.8vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
   margin: 0 0 18px;
   color: #fff;
 }
 
 .split-panel__copy h2 span {
-  color: #c7a37c;
+  color: #a3896c;
 }
 
 .split-panel__copy p {
-  color: rgba(255, 255, 255, 0.85);
+  color: #fff;
+  font-weight: 300;
   line-height: 1.65;
-  font-size: 1rem;
+  font-size: 0.95rem;
   max-width: 460px;
   margin: 0 0 26px;
 }
@@ -60,19 +62,20 @@
 .split-panel__btn {
   display: inline-block;
   align-self: flex-start;
-  background: #c7a37c;
-  color: #2b2620;
-  font-weight: 700;
+  background: rgba(163, 137, 108, 0.81);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  font-weight: 300;
   font-size: 0.95rem;
-  padding: 14px 32px;
-  border-radius: 999px;
+  padding: 15px 38px;
+  border-radius: 0;
   text-decoration: none;
-  transition: background 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 .split-panel__btn:hover {
-  background: #d9b892;
-  transform: translateY(-2px);
+  background: #a3896c;
 }
 
 @media (max-width: 860px) {

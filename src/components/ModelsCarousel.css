@@ -1,206 +1,114 @@
+/* Replica de la seccion de modelos de chery.com.ar */
 .models {
-  min-height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  padding: 48px 0 clamp(12px, 2vh, 32px);
-  background: linear-gradient(#9d9790 0%, #bdb7b1 85%);
-  color: #262422;
-}
-
-.models .container {
-  width: 100%;
-}
-
-.models__line-title {
-  margin: 0;
+  padding: 36px 0 72px;
+  background: linear-gradient(180deg, #a5a3a0 0%, #dad4ce 100%);
+  color: #403831;
   text-align: center;
-  font-size: clamp(1.8rem, 4vw, 3.4rem);
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: #1c1a18;
 }
 
-.models__line-tabs {
+.models__title {
+  display: block;
+  height: auto;
+  margin: 0 auto 38px;
+}
+
+.models__lines {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin-top: clamp(8px, 1.8vh, 24px);
+  margin-bottom: 26px;
 }
 
-.models__line-tab {
-  background: none;
-  border: none;
-  border-bottom: 1px solid transparent;
-  color: #54595f;
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 0 0 10px;
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-.models__line-tab:hover {
-  color: #1c1a18;
-}
-
-.models__line-tab.is-active {
-  color: #1c1a18;
-  border-color: rgba(28, 26, 24, 0.55);
-}
-
-.models__name-tabs {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 32px;
-  margin-top: clamp(8px, 1.5vh, 20px);
-  padding-top: clamp(8px, 1.5vh, 20px);
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-.models__name-tab {
+.models__line {
   background: none;
   border: none;
   border-bottom: 2px solid transparent;
-  color: #6b625a;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  padding: 0 0 12px;
+  padding: 10px 40px 14px;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.models__line img {
+  display: block;
+  height: auto;
+}
+
+.models__line:hover { opacity: 1; }
+
+.models__line.is-active {
+  opacity: 1;
+  border-bottom-color: #403831;
+}
+
+.models__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.models__tab {
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  padding: 14px 35px 18px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #6d665e;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.models__name-tab:hover {
-  color: #403831;
-}
+.models__tab:hover { color: #403831; }
 
-.models__name-tab.is-active {
+.models__tab.is-active {
   color: #403831;
-  border-color: #a3896c;
+  border-bottom-color: #a3896c;
 }
 
 .models__stage {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: clamp(8px, 2vh, 24px);
-  perspective: 1200px;
+  margin-top: 36px;
 }
 
 .models__car-image {
-  width: auto;
+  width: min(100%, 700px);
   height: auto;
-  max-width: min(900px, 100%);
-  max-height: 60vh;
-  object-fit: contain;
-  filter: drop-shadow(0 24px 32px rgba(0, 0, 0, 0.25));
-  animation: models-car-enter 1s cubic-bezier(0.22, 1, 0.36, 1) both;
-  will-change: transform, opacity;
+  animation: modelsFade 0.4s ease;
 }
 
-@keyframes models-car-enter {
-  0% {
-    opacity: 0;
-    transform: translateX(64px) scale(0.88) rotate(-2deg);
-  }
-  62% {
-    opacity: 1;
-    transform: translateX(-6px) scale(1.03) rotate(0.4deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) scale(1) rotate(0deg);
-  }
-}
-
-@keyframes models-meta-enter {
-  from {
-    opacity: 0;
-    transform: translateX(32px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.models__meta {
-  max-width: 640px;
-  margin: 0 auto;
-  text-align: center;
-  animation: models-meta-enter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
-}
-
-.models__tagline {
-  color: #4a453f;
-  margin-bottom: clamp(6px, 1vh, 16px);
-  line-height: 1.5;
-}
-
-.models__specs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: clamp(6px, 1vh, 16px) 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-}
-
-.models__specs dt {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #6b625a;
-  margin-bottom: 6px;
-}
-
-.models__specs dd {
-  font-weight: 600;
-  color: #262422;
+@keyframes modelsFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
 }
 
 .models__explore {
-  display: block;
-  width: max-content;
-  margin: clamp(8px, 1.5vh, 28px) auto 0;
+  display: inline-block;
+  margin-top: 28px;
+  width: 270px;
+  max-width: 100%;
+  padding: 14px 0;
   background: #a3896c;
   color: #fff;
-  border-radius: 999px;
-  padding: 14px 40px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  border-radius: 2px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   transition: background 0.2s ease;
 }
 
-.models__explore:hover {
-  background: #8f7659;
+.models__explore:hover { background: #8d7458; }
+
+@media (max-width: 860px) {
+  .models__line { padding: 8px 22px 12px; }
+  .models__tab { padding: 10px 16px 12px; font-size: 0.8rem; }
 }
 
-@media (max-width: 780px) {
-  .models {
-    padding: 130px 0 60px;
-  }
-
-  .models__line-tabs {
-    gap: 24px;
-  }
-
-  .models__name-tabs {
-    gap: 18px 24px;
-  }
-
-  .models__stage {
-    margin-top: 20px;
-  }
-
-  .models__car-image {
-    max-width: 380px;
-    max-height: 30vh;
-  }
-
-  .models__specs {
-    grid-template-columns: 1fr 1fr;
-  }
+@media (max-width: 540px) {
+  .models { padding-bottom: 56px; }
+  .models__title { transform: scale(0.8); margin-bottom: 24px; }
+  .models__line { padding: 8px 14px 10px; }
+  .models__tab { padding: 8px 10px; font-size: 0.72rem; }
 }

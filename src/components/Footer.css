@@ -81,7 +81,8 @@
   border-top: 1px solid rgba(28, 26, 24, 0.12);
   text-align: center;
   color: #8a847a;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  color: #31291f;
   display: grid;
   gap: 6px;
 }
@@ -101,5 +102,29 @@
 @media (max-width: 540px) {
   .footer__inner {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Chery: franja negra a todo el ancho, logo de Grupo Corven alineado a la derecha */
+.footer__corven {
+  background: #040404;
+  padding: 18px 0;
+}
+
+.footer__corven-inner {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer__corven img {
+  width: 22%;
+  min-width: 220px;
+  max-width: 503px;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .footer__corven img {
+    width: 74%;
   }
 }

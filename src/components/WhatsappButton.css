@@ -1,0 +1,51 @@
+.wpp-btn {
+  position: fixed;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  right: max(1rem, env(safe-area-inset-right));
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wpp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
+}
+
+.wpp-btn svg {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+/* El aro queda dentro del boton (inset 0 + scale acotado) para no generar scroll lateral en mobile. */
+.wpp-btn__ping {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #25d366;
+  opacity: 0.3;
+  animation: wppPing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes wppPing {
+  0% { transform: scale(1); opacity: 0.35; }
+  80%, 100% { transform: scale(1.25); opacity: 0; }
+}
+
+@media (min-width: 640px) {
+  .wpp-btn { bottom: 20px; right: 20px; width: 64px; height: 64px; }
+  .wpp-btn svg { width: 36px; height: 36px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wpp-btn__ping { animation: none; opacity: 0; }
+}
