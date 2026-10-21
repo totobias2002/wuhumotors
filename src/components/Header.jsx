@@ -47,7 +47,7 @@ export default function Header() {
     };
     const onKey = (e) => e.key === 'Escape' && shut();
     // Si se agranda la ventana a desktop con el panel abierto, se cierra solo.
-    const mq = window.matchMedia('(min-width: 861px)');
+    const mq = window.matchMedia('(min-width: 1101px)');
     const onMq = (e) => e.matches && shut();
     window.addEventListener('keydown', onKey);
     mq.addEventListener('change', onMq);

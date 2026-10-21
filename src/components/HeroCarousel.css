@@ -1,5 +1,4 @@
 .hero-carousel {
-  --header-h: 58px;
   position: relative;
   margin-top: var(--header-h);
   width: 100%;

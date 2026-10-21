@@ -8,6 +8,8 @@
   --accent-light: #5b8bff;
   --border: #2a2a32;
   --max-width: 1280px;
+  /* Alto del header fijo: 58px de barra + 1px de borde */
+  --header-h: 59px;
   font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
   color-scheme: dark;
 }
@@ -20,6 +22,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
 }
 
 body {

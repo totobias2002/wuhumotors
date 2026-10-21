@@ -20,7 +20,7 @@
   justify-content: space-between;
   gap: 24px;
   width: 100%;
-  padding: 6px 32px 6px 64px;
+  padding: 6px clamp(16px, 3vw, 32px) 6px clamp(16px, 4vw, 64px);
   min-height: 58px;
 }
 
@@ -32,8 +32,8 @@
 
 .header__logo img {
   /* El PNG trae mucho margen interno: se agranda y se compensa para que el header siga en ~58px. */
-  height: 104px;
-  margin: -24px 0;
+  height: 100px;
+  margin: -27px 0;
   width: auto;
   max-width: none;
   filter: invert(1) brightness(0.85);
@@ -47,10 +47,8 @@
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  /* En el flujo (no absoluto): se reparte el espacio sobrante entre logo y borde, asi nunca pisa al logo */
+  margin: 0 auto;
 }
 
 .header__nav a {
@@ -96,7 +94,7 @@
   display: contents;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1100px) {
   .header__inner {
     padding: 6px 12px 6px 16px;
   }
@@ -113,8 +111,9 @@
   /* Panel a pantalla completa que nace DEBAJO de la barra: la barra (logo + boton) queda siempre
      a la vista. El <nav> solo hace el slide-in; el scroll vive en .header__scroll. */
   .header__nav {
+    margin: 0;
     position: fixed;
-    top: 58px;
+    top: var(--header-h);
     left: 0;
     right: 0;
     bottom: 0;
@@ -197,8 +196,8 @@
 
 .header__dropdown-menu a:hover { background: #fff; }
 
-@media (max-width: 860px) {
-  .header__logo img { height: 76px; margin: -16px 0; }
+@media (max-width: 1100px) {
+  .header__logo img { height: clamp(56px, 18vw, 76px); margin: -16px 0; }
 
   .header__dropdown { flex-direction: column; width: 100%; }
 

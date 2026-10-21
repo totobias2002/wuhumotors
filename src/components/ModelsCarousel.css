@@ -1,8 +1,8 @@
 /* Replica de la seccion de modelos de chery.com.ar */
 .models {
   /* Ocupa toda la pantalla (menos el header fijo de 58px) y centra el contenido */
-  min-height: calc(100vh - 58px);
-  min-height: calc(100svh - 58px);
+  min-height: calc(100vh - var(--header-h));
+  min-height: calc(100svh - var(--header-h));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,6 +10,11 @@
   background: linear-gradient(180deg, #a5a3a0 0%, #dad4ce 100%);
   color: #403831;
   text-align: center;
+}
+
+/* El contenedor es hijo flex con margin auto: sin width:100% tomaba el ancho de su contenido y desbordaba a 320px */
+.models__inner {
+  width: 100%;
 }
 
 /* Apila varios hijos en la misma celda: el alto lo da el mas alto y nunca cambia */
@@ -140,9 +145,19 @@
 
 .models__explore:hover { background: #8d7458; }
 
+/* Hasta 1100px los 6 modelos de Tiggo no entran en una fila: se reparten en 3 + 3 en vez de 5 + 1 */
+@media (max-width: 1100px) {
+  .models__tabs {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    column-gap: 8px;
+  }
+}
+
 @media (max-width: 860px) {
   .models__line { padding: 8px 22px 12px; }
-  .models__tab { padding: 10px 16px 12px; font-size: 0.8rem; }
+  .models__tab { padding: 12px 18px; font-size: 0.85rem; }
 }
 
 @media (max-width: 540px) {
@@ -152,6 +167,7 @@
 
   /* Pestanas de modelo: 2 columnas, letra mas grande y mas aire para que se lean y se toquen bien */
   .models__tabs {
+    display: flex;
     gap: 4px 8px;
     padding: 0 8px;
   }
@@ -168,4 +184,13 @@
     color: #2b2520;
     font-weight: 500;
   }
+}
+
+/* Pantallas muy angostas (320-380px): nada puede desbordar */
+@media (max-width: 380px) {
+  .models__lines { max-width: 100%; }
+  .models__line { flex: 1 1 0; min-width: 0; padding: 8px 4px 10px; }
+  .models__line img { max-width: 100%; margin: 0 auto; }
+  .models__tabs { padding: 0 4px; }
+  .models__tab { padding: 10px 4px; font-size: 0.72rem; letter-spacing: 0; white-space: normal; }
 }

@@ -114,6 +114,8 @@
 .footer__corven-inner {
   display: flex;
   justify-content: flex-end;
+  /* Deja libre el lugar del boton flotante de WhatsApp (64px + 20px de margen) */
+  padding-right: 96px;
 }
 
 .footer__corven img {
@@ -125,11 +127,13 @@
 
 @media (max-width: 767px) {
   .footer__corven img {
-    width: 74%;
+    width: min(70%, 260px);
+    min-width: 0;
   }
 
   /* A la izquierda para que el boton flotante de WhatsApp no tape el logo */
   .footer__corven-inner {
     justify-content: flex-start;
+    padding-right: 0;
   }
 }
