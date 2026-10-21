@@ -55,8 +55,17 @@ export default function ModelsCarousel() {
           ))}
         </div>
 
+        {/* Todas las fotos quedan montadas (precargadas) y solo cambia la opacidad: sin parpadeo ni saltos de altura. */}
         <div className="models__stage">
-          <img key={active.id} src={active.image} alt={active.name} className="models__car-image" />
+          {models.map((m) => (
+            <img
+              key={m.id}
+              src={m.image}
+              alt={m.name}
+              className={`models__car-image ${m.id === active.id ? 'is-active' : ''}`}
+              aria-hidden={m.id !== active.id}
+            />
+          ))}
         </div>
 
         <a href={active.officialUrl} target="_blank" rel="noopener noreferrer" className="models__explore">
