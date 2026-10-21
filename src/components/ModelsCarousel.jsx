@@ -1,10 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { models, modelLines } from '../data/models';
+import { SELECT_MODEL_EVENT } from '../utils/selectModel';
 import './ModelsCarousel.css';
 
 export default function ModelsCarousel() {
   const [lineId, setLineId] = useState(modelLines[0].id);
   const [modelId, setModelId] = useState(models.find((m) => m.line === modelLines[0].id).id);
+
+  // El menu "Modelos" del header pide mostrar un modelo concreto.
+  useEffect(() => {
+    const onSelect = (e) => {
+      const m = models.find((x) => x.id === e.detail?.id);
+      if (!m) return;
+      setLineId(m.line);
+      setModelId(m.id);
+    };
+    window.addEventListener(SELECT_MODEL_EVENT, onSelect);
+    return () => window.removeEventListener(SELECT_MODEL_EVENT, onSelect);
+  }, []);
 
   const lineModels = models.filter((m) => m.line === lineId);
   const active = lineModels.find((m) => m.id === modelId) || lineModels[0];

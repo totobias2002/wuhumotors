@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import logo from '../assets/logo-cherywuhu.png';
-import { models, PRICE_LIST_URL } from '../data/models';
+import { models, modelLines, PRICE_LIST_URL } from '../data/models';
+import { selectModel } from '../utils/selectModel';
 import './Header.css';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
+  const [megaLine, setMegaLine] = useState(modelLines[0].id);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -17,6 +19,12 @@ export default function Header() {
   const close = () => {
     setMenuOpen(false);
     setOpenMenu(null);
+  };
+
+  const pickModel = (e, id) => {
+    e.preventDefault();
+    close();
+    selectModel(id);
   };
 
   // Menu movil (mismo criterio que el de BAIC): con el panel abierto se congela el fondo.
@@ -72,7 +80,7 @@ export default function Header() {
           <div className="header__scroll">
             {/* Con el panel movil abierto no hay hover: el toque dispara mouseenter y despues click, y se anulaban entre si. */}
             <div
-              className={`header__dropdown ${openMenu === 'modelos' ? 'is-open' : ''}`}
+              className={`header__dropdown header__dropdown--mega ${openMenu === 'modelos' ? 'is-open' : ''}`}
               onMouseEnter={menuOpen ? undefined : () => setOpenMenu('modelos')}
               onMouseLeave={menuOpen ? undefined : () => setOpenMenu(null)}
             >
@@ -85,12 +93,43 @@ export default function Header() {
                 Modelos
                 <span className="header__caret" aria-hidden="true" />
               </button>
-              <div className="header__dropdown-menu">
-                {models.map((m) => (
-                  <a key={m.id} href="#modelos" onClick={close}>
-                    {m.name}
-                  </a>
-                ))}
+              <div className="header__mega">
+                <div className="header__mega-inner">
+                  {/* Solo escritorio: pestañas por linea con el logotipo, igual que en la seccion Modelos */}
+                  <div className="header__mega-lines" role="tablist" aria-label="Línea de modelos">
+                    {modelLines.map((l) => (
+                      <button
+                        key={l.id}
+                        type="button"
+                        role="tab"
+                        aria-selected={l.id === megaLine}
+                        aria-label={l.label}
+                        className={`header__mega-line ${l.id === megaLine ? 'is-active' : ''}`}
+                        onMouseEnter={() => setMegaLine(l.id)}
+                        onFocus={() => setMegaLine(l.id)}
+                        onClick={() => setMegaLine(l.id)}
+                      >
+                        <img src={l.logo} alt="" />
+                      </button>
+                    ))}
+                  </div>
+                  {modelLines.map((l) => (
+                    <div key={l.id} className={`header__mega-group ${l.id === megaLine ? 'is-active' : ''}`}>
+                      {/* Solo celular: la linea funciona como subtitulo y se ven todas juntas */}
+                      <img className="header__mega-grouptitle" src={l.logo} alt={l.label} />
+                      <div className="header__mega-models">
+                        {models
+                          .filter((m) => m.line === l.id)
+                          .map((m) => (
+                            <a key={m.id} href="#modelos" className="header__mega-model" onClick={(e) => pickModel(e, m.id)}>
+                              <img src={m.image} alt="" loading="lazy" />
+                              <span>{m.name}</span>
+                            </a>
+                          ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             <div
