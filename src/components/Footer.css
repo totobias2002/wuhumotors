@@ -127,4 +127,9 @@
   .footer__corven img {
     width: 74%;
   }
+
+  /* A la izquierda para que el boton flotante de WhatsApp no tape el logo */
+  .footer__corven-inner {
+    justify-content: flex-start;
+  }
 }

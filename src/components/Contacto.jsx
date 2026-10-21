@@ -50,7 +50,7 @@ export default function Contacto() {
     <section id="contacto" className="contacto">
       <div className="container contacto__inner">
         <h2 className="contacto__title reveal">
-          Sin dudas, tu próximo Chery
+          Sin dudas, tu próximo Chery{' '}
           <br />
           está cada vez más cerca.
         </h2>

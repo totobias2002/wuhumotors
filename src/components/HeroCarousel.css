@@ -108,4 +108,12 @@
 
   .hero-carousel__arrow--prev { left: 10px; }
   .hero-carousel__arrow--next { right: 10px; }
+
+  .hero-carousel__slide--contain-m {
+    background: #0a0a12;
+  }
+
+  .hero-carousel__slide--contain-m img {
+    object-fit: contain;
+  }
 }

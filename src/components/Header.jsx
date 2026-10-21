@@ -19,8 +19,22 @@ export default function Header() {
     setOpenMenu(null);
   };
 
+  // Menu movil: Escape cierra y se bloquea el scroll del fondo mientras esta abierto.
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const onKey = (e) => e.key === 'Escape' && close();
+    window.addEventListener('keydown', onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [menuOpen]);
+
   return (
     <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
+      <div className={`header__backdrop ${menuOpen ? 'is-open' : ''}`} onClick={close} aria-hidden="true" />
       <div className="header__inner">
         <a href="#inicio" className="header__logo">
           <img src={logo} alt="Wuhu Motors - Chery" />
@@ -79,7 +93,8 @@ export default function Header() {
 
         <button
           className={`header__toggle ${menuOpen ? 'is-open' : ''}`}
-          aria-label="Abrir menú"
+          aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
         >
           <span />

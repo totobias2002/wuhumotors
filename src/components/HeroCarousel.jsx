@@ -30,7 +30,7 @@ export default function HeroCarousel() {
         <a
           key={slide.id}
           href="#contacto"
-          className={`hero-carousel__slide ${i === index ? 'is-active' : ''}`}
+          className={`hero-carousel__slide ${i === index ? 'is-active' : ''} ${slide.mobileFit === 'contain' ? 'hero-carousel__slide--contain-m' : ''}`}
           aria-hidden={i !== index}
           tabIndex={i === index ? 0 : -1}
         >
