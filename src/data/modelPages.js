@@ -56,7 +56,6 @@ export const modelPages = {
   },
 };
 
-// Pagina interna propia si existe; si no, la ficha oficial de Chery.
-export function modelHref(m) {
-  return modelPages[m.slug] ? { to: `/${m.slug}` } : { href: m.officialUrl };
-}
+// Todos los modelos tienen ruta interna (/slug). Los que todavia no tienen ficha completa muestran
+// una pagina "proximamente" dentro del mismo sitio.
+export const modelPath = (m) => `/${m.slug}`;

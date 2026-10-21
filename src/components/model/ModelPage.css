@@ -236,3 +236,48 @@
 @media (max-width: 767px) {
   .mp-hero__inner { padding: 58px 60px 0; }
 }
+
+/* ---- Visor de fotos (dentro de la pagina) ---- */
+.mp-gallery__item { padding: 0; border: none; cursor: zoom-in; }
+
+.mp-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.88);
+}
+
+.mp-lightbox img { max-width: min(92vw, 1200px); max-height: 86vh; object-fit: contain; }
+
+.mp-lightbox__close,
+.mp-lightbox__nav {
+  position: absolute;
+  background: none;
+  border: none;
+  color: #fff;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.mp-lightbox__close { top: 14px; right: 20px; font-size: 2.6rem; }
+.mp-lightbox__nav { top: 50%; transform: translateY(-50%); padding: 12px 16px; font-size: 3rem; }
+.mp-lightbox__nav--prev { left: 8px; }
+.mp-lightbox__nav--next { right: 8px; }
+
+/* ---- Modelo sin ficha completa ---- */
+.mp-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  min-height: calc(100vh - var(--header-h));
+  padding: 70px 20px;
+  background: linear-gradient(180deg, #a5a3a0 0%, #dad4ce 100%);
+  text-align: center;
+}
+
+.mp-soon__car { width: min(100%, 760px); height: auto; }
+.mp-soon__text { max-width: 520px; font-size: 15px; font-weight: 300; line-height: 1.6; }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { models, modelLines } from '../data/models';
-import { modelHref } from '../data/modelPages';
+import { modelPath } from '../data/modelPages';
 import './ModelsCarousel.css';
 
 export default function ModelsCarousel() {
@@ -10,8 +10,6 @@ export default function ModelsCarousel() {
 
   const lineModels = models.filter((m) => m.line === lineId);
   const active = lineModels.find((m) => m.id === modelId) || lineModels[0];
-
-  const explore = modelHref(active);
 
   const selectLine = (id) => {
     setLineId(id);
@@ -91,11 +89,7 @@ export default function ModelsCarousel() {
           ))}
         </div>
 
-        {explore.to ? (
-          <Link to={explore.to} className="models__explore">Explorar</Link>
-        ) : (
-          <a href={explore.href} target="_blank" rel="noopener noreferrer" className="models__explore">Explorar</a>
-        )}
+        <Link to={modelPath(active)} className="models__explore">Explorar</Link>
       </div>
     </section>
   );

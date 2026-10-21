@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { modelPages } from '../data/modelPages';
+import { models } from '../data/models';
+import ModelSoon from './ModelSoon';
 import ModelHero from '../components/model/ModelHero';
 import TextGallery from '../components/model/TextGallery';
 import VideoBand from '../components/model/VideoBand';
@@ -21,7 +23,10 @@ export default function ModelPage() {
     };
   }, [data]);
 
-  if (!data) return <Navigate to="/" replace />;
+  if (!data) {
+    const model = models.find((m) => m.slug === slug);
+    return model ? <ModelSoon model={model} /> : <Navigate to="/" replace />;
+  }
 
   const common = { modelLogo: data.modelLogo, modelName: data.name };
 

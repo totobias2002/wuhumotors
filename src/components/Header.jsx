@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo-cherywuhu.png';
 import { models, modelLines, PRICE_LIST_URL } from '../data/models';
-import { modelHref } from '../data/modelPages';
+import { modelPath } from '../data/modelPages';
 import './Header.css';
 
 export default function Header() {
@@ -115,24 +115,12 @@ export default function Header() {
                       <div className="header__mega-models">
                         {models
                           .filter((m) => m.line === l.id)
-                          .map((m) => {
-                            const target = modelHref(m);
-                            const card = (
-                              <>
-                                <img src={m.image} alt="" loading="lazy" />
-                                <span>{m.name}</span>
-                              </>
-                            );
-                            return target.to ? (
-                              <Link key={m.id} to={target.to} className="header__mega-model" onClick={close}>
-                                {card}
-                              </Link>
-                            ) : (
-                              <a key={m.id} href={target.href} target="_blank" rel="noopener noreferrer" className="header__mega-model" onClick={close}>
-                                {card}
-                              </a>
-                            );
-                          })}
+                          .map((m) => (
+                            <Link key={m.id} to={modelPath(m)} className="header__mega-model" onClick={close}>
+                              <img src={m.image} alt="" loading="lazy" />
+                              <span>{m.name}</span>
+                            </Link>
+                          ))}
                       </div>
                     </div>
                   ))}
@@ -154,9 +142,6 @@ export default function Header() {
                 <span className="header__caret" aria-hidden="true" />
               </button>
               <div className="header__dropdown-menu">
-                <a href="https://chery.com.ar/introduccion/" target="_blank" rel="noopener noreferrer" onClick={close}>
-                  Introducción
-                </a>
                 <a href="#contacto" onClick={close}>Sin dudas</a>
               </div>
             </div>
