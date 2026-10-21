@@ -1,12 +1,13 @@
 // Contenido de las paginas de modelo (replica de chery.com.ar/<slug>/).
 // Las fotos y el video del hero viven en /public/chery/models/<slug>/. Los videos de asistencias
 // (pesan 4-11 MB cada uno) se enlazan desde chery.com.ar para no inflar el repositorio.
+import gen, { tiggo8ProMobile } from './modelPagesGen';
+
 const UP = 'https://chery.com.ar/wp-content/uploads';
 
 const t8 = '/chery/models/tiggo-8-pro';
 
-export const modelPages = {
-  'tiggo-8-pro': {
+const tiggo8Pro = {
     name: 'Tiggo 8 Pro',
     hero: { video: `${t8}/hero.mp4`, logo: `${t8}/logo-hero.png`, logoSize: [422, 50] },
     modelLogo: `${t8}/logo-btn.png`,
@@ -53,8 +54,20 @@ export const modelPages = {
       { name: 'Rhine Blue', hex: '#003366', image: `${t8}/color-5.png` },
       { name: 'Aurora Green', hex: '#0f5e3a', image: `${t8}/color-6.png` },
     ],
-  },
 };
+
+// La pagina se arma con una lista de bloques (el orden y las secciones cambian en cada modelo de Chery).
+tiggo8Pro.blocks = [
+  { type: 'hero', video: tiggo8Pro.hero.video, logo: tiggo8Pro.hero.logo, logoSize: tiggo8Pro.hero.logoSize, highlights: tiggo8Pro.highlights.map((h, i) => ({ icon: ['warranty', 'engine', 'adas', 'seats'][i], text: h.text })), brochure: tiggo8Pro.brochure },
+  { type: 'feature', id: 'interior', title: tiggo8Pro.interior.title, paras: [tiggo8Pro.interior.text], images: tiggo8Pro.interior.images, tone: 'panel', m: tiggo8ProMobile.interior },
+  { type: 'band', video: tiggo8Pro.band.video, image: tiggo8Pro.band.image },
+  { type: 'feature', id: 'seguridad', title: tiggo8Pro.security.title, paras: [tiggo8Pro.security.text], images: tiggo8Pro.security.images, reverse: true, tone: 'panel', m: tiggo8ProMobile.security },
+  { type: 'tech', id: 'tecnologia', title: tiggo8Pro.tech.title, paras: tiggo8Pro.tech.paragraphs, bg: tiggo8Pro.tech.bg, m: tiggo8ProMobile.tech },
+  { type: 'carousel', items: tiggo8Pro.adas },
+  { type: 'colors', brochure: tiggo8Pro.colorsBrochure, colors: tiggo8Pro.colors },
+];
+
+export const modelPages = { ...gen, 'tiggo-8-pro': tiggo8Pro };
 
 // Todos los modelos tienen ruta interna (/slug). Los que todavia no tienen ficha completa muestran
 // una pagina "proximamente" dentro del mismo sitio.

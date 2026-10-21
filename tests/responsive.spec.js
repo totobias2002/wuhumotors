@@ -148,15 +148,19 @@ test('menu Modelos (celular): tarjetas en una columna y al elegir un modelo abre
   await expect(page.locator('.header__nav')).not.toHaveClass(/is-open/);
 });
 
-test('pagina de modelo: sin scroll horizontal en celular y escritorio', async ({ page }) => {
-  for (const [w, h] of [[320, 640], [393, 852], [768, 1024], [1440, 900]]) {
-    await page.setViewportSize({ width: w, height: h });
-    await page.goto('/tiggo-8-pro');
-    await page.waitForSelector('.mp-hero');
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-    expect(overflow, `scroll horizontal a ${w}px`).toBe(0);
-  }
-});
+const MODEL_SLUGS = ['tiggo-2-pro-max', 'tiggo-4-pro', 'tiggo-4-hybrid', 'tiggo-7-pro-hybrid', 'tiggo-7-csh', 'tiggo-8-pro', 'arrizo8-csh', 'himla'];
+
+for (const slug of MODEL_SLUGS) {
+  test(`pagina de modelo ${slug}: sin scroll horizontal en celular y escritorio`, async ({ page }) => {
+    for (const [w, h] of [[320, 640], [393, 852], [768, 1024], [1440, 900]]) {
+      await page.setViewportSize({ width: w, height: h });
+      await page.goto(`/${slug}`);
+      await page.waitForSelector('.mp-hero');
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+      expect(overflow, `scroll horizontal a ${w}px`).toBe(0);
+    }
+  });
+}
 
 test('una ruta desconocida vuelve al inicio', async ({ page }) => {
   await page.goto('/no-existe');

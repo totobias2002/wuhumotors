@@ -14,7 +14,7 @@
 /* ---- Tipografia y botones ---- */
 .mp-h2 { font-size: 35px; font-weight: 600; line-height: 35px; color: var(--brown); }
 .mp-h2--center { text-align: center; }
-.mp-divider { display: block; width: 56px; height: 2px; background: var(--tan); }
+.mp-divider { display: block; width: 56px; height: 2px; margin: 2px 0; background: var(--tan); }
 .mp-p { margin: 0 0 14.4px; font-size: 15px; font-weight: 400; line-height: 22.5px; color: var(--brown); }
 .mp-p b { font-weight: 700; }
 
@@ -40,23 +40,27 @@
 /* ---- Hero ---- */
 .mp-hero {
   position: relative;
-  min-height: calc(100vh - var(--header-h));
-  min-height: calc(100svh - var(--header-h));
   background: #000;
   overflow: hidden;
 }
 
 .mp-hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* Como en chery.com.ar, en escritorio el hero ocupa 100vh y arranca bajo el header */
+.mp-hero { --pull: 20px; margin-top: calc(-1 * (var(--header-h) + var(--pull))); min-height: 100vh; min-height: 100svh; }
+@media (max-width: 1024px) { .mp-hero { --pull: 53px; } }
 
 .mp-hero__inner {
   position: relative;
   z-index: 1;
-  padding: 58px 60px 0;
+  padding: var(--hero-pt, 137px) 60px 0;
   text-align: center;
 }
 
-.mp-hero__logo { display: inline-block; width: 422px; max-width: 100%; height: auto; }
+.mp-hero__logo { display: inline-block; width: var(--logo-w, 422px); max-width: 100%; height: auto; }
+.mp-hero__bg, .mp-hero__bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.mp-hero__bg img { object-position: var(--bg-pos, 50% 50%); }
 .mp-hero__features { display: none; }
+.mp-hero__ov { position: absolute; z-index: 1; top: var(--ov-top); left: var(--ov-l); right: var(--ov-r); width: var(--ov-w); height: auto; }
 
 .mp-hero__bar {
   position: absolute;
@@ -88,7 +92,6 @@
   column-gap: 30px;
   min-height: 600px;
   padding: 0 60px;
-  background: var(--panel);
 }
 
 .mp-split__copy,
@@ -127,7 +130,7 @@
   display: flex;
   align-items: center;
   min-height: 600px;
-  padding: 0 60px;
+  padding: var(--tech-pad, 0 60px);
   background-color: var(--panel);
   background-size: cover;
   background-position: center;
@@ -175,8 +178,8 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  margin: 90px 0;
-  padding: 0 60px 55px;
+  margin: var(--c-mt, 90px) 0 var(--c-mb, 90px);
+  padding: var(--c-top, 0) 60px calc(55px + var(--c-bottom, 0px));
 }
 
 .mp-colors__dots { display: flex; justify-content: center; flex-wrap: wrap; }
@@ -184,7 +187,8 @@
 .mp-colors__dot span { display: block; width: 25px; height: 25px; border-radius: 50%; }
 .mp-colors__dot:focus-visible { outline: 2px solid var(--tan); border-radius: 8px; }
 
-.mp-colors__stage { position: relative; margin-top: 54px; width: 960px; max-width: 100%; aspect-ratio: 960 / 488; }
+.mp-colors__stage { position: relative; margin-top: 54px; width: var(--stage-w, 960px); max-width: 100%; }
+.mp-colors--slim .mp-colors__dot { padding: 5px 35px; }
 .mp-colors__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.3s ease; }
 .mp-colors__stage img.is-active { opacity: 1; }
 .mp-colors__name { margin: 0; font-size: 25px; font-weight: 500; line-height: 1.2; color: #54595f; text-align: center; }
@@ -198,44 +202,42 @@
     position: absolute;
     z-index: 1;
     left: 50%;
-    bottom: 238px;
+    bottom: var(--m-btn-bottom, 238px);
     transform: translateX(-50%);
   }
-  .mp-hero__inner { padding: 58px 60px 0; }
+  .mp-hero__inner { padding: 170px 60px 0; }
   .mp-hero__logo { width: 259px; }
+  .mp-hero__bg img { object-position: 50% 50%; }
+  .mp-hero--bgfixedw .mp-hero__bg img { inset: auto; left: 50%; top: 50%; width: var(--bg-w-m); height: auto; max-width: none; transform: translate(-50%, -50%); }
+  .mp-hero__ov { top: var(--ovm-top); left: var(--ovm-l); right: auto; width: var(--ovm-w); }
   .mp-band--video { display: none; }
   .mp-band--image { display: block; }
 
-  /* Interior / Seguridad: texto arriba y galeria de 1 columna debajo */
-  .mp-split { display: block; padding: 60px 20px; min-height: 0; }
-  .mp-split__copy { margin-right: 30px; padding: 10px; }
+  /* Texto arriba y galeria de 1 columna debajo; medidas de cada modelo en variables --m-* */
+  .mp-split { display: block; padding: var(--m-pad, 60px 20px); min-height: 0; }
+  .mp-split__copy { margin-right: var(--m-cmr, 30px); padding: var(--m-cp, 10px); }
   .mp-divider { width: 27px; }
   .mp-split__cta { grid-template-columns: 1fr; row-gap: 25px; }
   .mp-split__cta .mp-btn { justify-self: start; }
-  .mp-split__logo { width: 100%; }
-  .mp-gallery { grid-template-columns: 1fr; padding: 0; }
-  .mp-split--reverse { padding: 60px 30px 0 20px; }
-  .mp-split--reverse .mp-split__copy { margin-right: 0; padding: 10px 20px; }
-  .mp-split--reverse .mp-split__cta { padding-bottom: 20px; }
-  .mp-split--reverse .mp-gallery { margin: 0 10px 10px; }
+  .mp-split__logo { width: var(--m-logo-w, 100%); }
+  .mp-gallery { grid-template-columns: 1fr; padding: var(--m-gp, 0); }
+  .mp-split__video { padding: var(--m-gp, 0); }
 
-  .mp-tech { padding: 60px 20px 80px 40px; min-height: 0; }
-  .mp-tech__copy { width: 100%; margin-right: 30px; max-width: 303px; }
+  .mp-tech { padding: var(--m-pad, 60px 20px 80px 40px); min-height: 0; }
+  .mp-tech__copy { width: auto; max-width: none; margin: 0 var(--m-cmr, 30px) 0 0; padding: var(--m-cp, 10px); }
   .mp-adas { margin-top: 0; padding: 0 0 6px; }
   .mp-adas__slide { padding: 0 10px; }
   .mp-adas__slide figcaption { margin-top: 30px; padding-bottom: 48px; }
   .mp-adas__arrow--prev { left: 6px; }
   .mp-adas__arrow--next { right: 6px; }
 
-  .mp-colors { margin: 90px 0; padding: 60px 10px 0; }
-  .mp-colors__dot { padding: 20px; }
-  .mp-colors__stage { margin-top: -6px; width: 100%; }
+  .mp-colors { padding: var(--cm-top, 60px) var(--cm-side, 10px) var(--cm-bottom, 0); }
+  .mp-colors__dot { padding: var(--cm-dot, 20px); }
+  .mp-colors--slim .mp-colors__dot { padding: var(--cm-dot, 20px); }
+  .mp-colors__stage { margin-top: var(--cm-gap, -6px); width: var(--cm-w, 373px); max-width: 100%; }
   .mp-colors__name { line-height: 25px; }
 }
 
-@media (max-width: 767px) {
-  .mp-hero__inner { padding: 58px 60px 0; }
-}
 
 /* ---- Visor de fotos (dentro de la pagina) ---- */
 .mp-gallery__item { padding: 0; border: none; cursor: zoom-in; }
@@ -281,3 +283,110 @@
 
 .mp-soon__car { width: min(100%, 760px); height: auto; }
 .mp-soon__text { max-width: 520px; font-size: 15px; font-weight: 300; line-height: 1.6; }
+
+/* ---- Variantes de fondo y color de texto (cada modelo de Chery usa las suyas) ---- */
+.mp-tone--white { background: #fff; }
+.mp-tone--panel { background: var(--panel); }
+.mp-ink--dark .mp-h2 { color: #18130e; }
+.mp-ink--dark .mp-p { color: #444; }
+.mp-ink--darkest .mp-h2 { color: #000; }
+.mp-ink--darkest .mp-p { color: #444; }
+.mp-ink--light .mp-h2,
+.mp-ink--light .mp-p { color: #fff; }
+
+.mp-tech--right { justify-content: flex-end; }
+@media (min-width: 1025px) { .mp-tech__copy--narrow { width: 605px; } }
+.mp-tech--right .mp-tech__copy { margin-right: 0; margin-left: 30px; }
+
+/* ---- Video de la franja con controles / foto fija ---- */
+.mp-band--photo { background-size: cover; background-position: center; }
+.mp-band--player { display: flex; align-items: center; justify-content: center; background: #fff; }
+.mp-band--player video { display: block; width: 100%; height: auto; max-height: 100%; background: #000; }
+
+/* Video en lugar de galeria (Arrizo 8) */
+.mp-split__video { padding: 10px; }
+.mp-split__video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000; }
+
+/* ---- Carrusel de fotos (asistencias sin video) ---- */
+.mp-adas--images { margin-top: -126px; padding-bottom: 16px; }
+.mp-adas--images .mp-adas__viewport { border-radius: 0; }
+.mp-adas--images .mp-adas__slide { padding: 10px 3px 10px 10px; }
+.mp-adas--images .mp-adas__slide img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+.mp-adas--images .mp-adas__slide figcaption { margin: 10px 0 0; padding: 0; font-size: 15px; font-weight: 600; line-height: 15px; color: var(--tan); }
+.mp-adas--images .mp-adas__dots { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; }
+.mp-adas--images .mp-adas__arrow { top: 216px; width: 25px; height: 25px; font-size: 25px; line-height: 25px; color: rgba(237, 237, 237, 0.9); }
+.mp-adas--images .mp-adas__arrow--prev { left: 60px; }
+.mp-adas--images .mp-adas__arrow--next { right: 60px; }
+
+/* ---- Texto centrado, foto a todo el ancho y tarjetas de beneficios ---- */
+.mp-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 60px;
+  min-height: 616px;
+  padding: 0 300px;
+  background: #fff;
+}
+.mp-h2--soft { color: #756659; }
+.mp-p--center { text-align: center; color: #444; }
+.mp-photo { height: 630px; background-size: cover; background-position: center; }
+
+.mp-cards { padding: var(--cards-top, 170px) 107px var(--cards-bottom, 170px); background: #e1d7cb; }
+.mp-cards > * { max-width: 1140px; margin-left: auto; margin-right: auto; }
+.mp-cards .mp-h2 { padding: 0 10px; }
+.mp-cards__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 20px; margin: 60px auto 0; padding: 10px; }
+.mp-cards__grid { max-width: 1120px; }
+.mp-card { padding: 35px 25px; background: linear-gradient(180deg, #a3896c 0%, #413425 100%); color: #fff; }
+.mp-card:not(:first-child) { padding-bottom: 25px; }
+.mp-card h3 { margin: 0 0 10px; font-size: 20px; font-weight: 600; line-height: 24px; }
+.mp-card p { margin: 0; font-size: 12px; font-weight: 400; line-height: 18px; }
+
+/* ---- Servicios conectados ---- */
+.mp-services { display: grid; grid-template-columns: 560px 540px; align-items: center; justify-content: center; column-gap: 30px; padding: 10px 0; background: #fff; }
+.mp-services__copy { display: flex; flex-direction: column; gap: 20px; }
+.mp-services__copy .mp-h2 { font-size: 32px; font-weight: 500; line-height: 32px; color: #000; }
+.mp-services__copy .mp-p { color: #7a7a7a; }
+.mp-services__media video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+.mp-services__note { margin: 14px 0 0; font-size: 15px; line-height: 22.5px; color: #7a7a7a; }
+
+.mp-text .mp-p:last-child { margin-bottom: 0; }
+@media (max-width: 1024px) {
+  .mp-text .mp-p:last-child { margin-bottom: 14.4px; }
+}
+.mp-br { display: none; }
+
+/* Variante "boxed": contenido en una caja de 1140px (algunos modelos de Chery lo usan); solo escritorio */
+@media (min-width: 1025px) {
+  .mp-split--boxed { grid-template-columns: repeat(2, minmax(0, 555px)); justify-content: center; padding: 0 10px; }
+  .mp-split--boxed .mp-split__video { padding: 0; }
+  .mp-tech--boxed { padding: 0 10px; justify-content: center; }
+  .mp-tech--boxed .mp-tech__copy { width: 570px; margin: 0 570px 0 0; }
+}
+
+/* ---- Carrusel de fotos en celular/tablet: sin solapar la foto de fondo ---- */
+@media (max-width: 1024px) {
+  .mp-adas--images { margin-top: 0; padding: 0 20px 16px; }
+  .mp-adas--images .mp-adas__slide { padding: 10px 0 10px 10px; }
+  .mp-adas--images .mp-adas__arrow { top: 177px; }
+  .mp-adas--images .mp-adas__arrow--prev { left: 20px; }
+  .mp-adas--images .mp-adas__arrow--next { right: 20px; }
+}
+
+/* ---- Bloques informativos en celular/tablet ---- */
+@media (max-width: 1024px) {
+  .mp-info { gap: 60px; min-height: 0; padding: 40px 20px; }
+  .mp-cards { padding: 70px 20px 80px; }
+  .mp-cards__grid { grid-template-columns: 1fr; gap: 20px; margin: 60px 10px 0; padding: 10px; }
+  .mp-services { display: block; padding: 10px; }
+  .mp-services__copy { gap: 20px; }
+  .mp-services__media { padding: 20px 10px 0; }
+}
+
+/* ---- Fondos de las secciones con foto en celular/tablet (cada modelo recorta distinto) ---- */
+@media (max-width: 1024px) {
+  .mp-tech { background-size: var(--bg-size-m, cover); background-position: var(--bg-pos-m, 0 0); }
+  .mp-split--vfirst { display: flex; flex-direction: column; }
+  .mp-split--vfirst .mp-split__video { order: -1; }
+  .mp-split--vfirst .mp-split__video video { aspect-ratio: 373 / 663; }
+}

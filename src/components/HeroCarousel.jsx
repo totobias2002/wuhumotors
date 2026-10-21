@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { heroSlidesDesktop, heroSlidesMobile, HERO_MOBILE_QUERY } from '../data/heroSlides';
 import './HeroCarousel.css';
 
@@ -41,15 +42,15 @@ export default function HeroCarousel() {
   return (
     <section id="inicio" className="hero-carousel">
       {slides.map((slide, i) => (
-        <a
+        <Link
           key={slide.id}
-          href="#contacto"
+          to={`/${slide.slug}`}
           className={`hero-carousel__slide ${i === index ? 'is-active' : ''}`}
           aria-hidden={i !== index}
           tabIndex={i === index ? 0 : -1}
         >
           <img src={slide.src} alt={slide.alt} loading={i === 0 ? 'eager' : 'lazy'} />
-        </a>
+        </Link>
       ))}
 
       <button

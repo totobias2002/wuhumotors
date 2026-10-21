@@ -8,7 +8,7 @@ function perView() {
 }
 
 // Carrusel de videos de asistencias a la conduccion (3 por vista en escritorio).
-export default function AdasCarousel({ items }) {
+export default function AdasCarousel({ items, bare }) {
   const [pv, setPv] = useState(perView);
   const [index, setIndex] = useState(0);
   const trackRef = useRef(null);
@@ -24,7 +24,7 @@ export default function AdasCarousel({ items }) {
   const cur = Math.min(index, max);
 
   return (
-    <section className="mp-adas" aria-label="Asistencias a la conducción">
+    <section className={`mp-adas ${bare ? 'mp-adas--images' : ''}`} aria-label="Asistencias a la conducción">
       <div className="mp-adas__viewport">
         <div
           className="mp-adas__track"
@@ -32,8 +32,8 @@ export default function AdasCarousel({ items }) {
           style={{ '--pv': pv, transform: `translateX(calc(${cur} * -1 * (100% / var(--pv))))` }}
         >
           {items.map((it) => (
-            <figure className="mp-adas__slide" key={it.caption}>
-              <video src={it.video} controls muted playsInline preload="metadata" />
+            <figure className="mp-adas__slide" key={it.caption + (it.image || it.video)}>
+              {it.image ? <img src={it.image} alt={it.caption} loading="lazy" /> : <video src={it.video} controls muted playsInline preload="metadata" />}
               <figcaption>{it.caption}</figcaption>
             </figure>
           ))}
