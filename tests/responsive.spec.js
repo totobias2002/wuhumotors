@@ -133,14 +133,17 @@ test('menu Modelos (escritorio): panel con lineas y, al elegir un modelo, baja a
   await expect.poll(async () => Math.round(await page.locator('#modelos').evaluate((e) => e.getBoundingClientRect().top))).toBeLessThan(HEADER_H + 4);
 });
 
-test('menu Modelos (celular): lineas agrupadas con subtitulo y al elegir un modelo baja a la seccion', async ({ page }) => {
+test('menu Modelos (celular): tarjetas en una columna y al elegir un modelo baja a la seccion', async ({ page }) => {
   await page.setViewportSize({ width: 393, height: 852 });
   await page.goto('/');
   await page.locator('.header__toggle').click();
   await page.locator('.header__dropdown--mega > .header__dropdown-toggle').click();
 
-  await expect(page.locator('.header__mega-grouptitle')).toHaveCount(3);
-  for (const t of await page.locator('.header__mega-grouptitle').all()) await expect(t).toBeVisible();
+  // Una tarjeta por modelo (8), una debajo de otra y a todo el ancho, como en BAIC.
+  const cards = page.locator('.header__mega-model');
+  await expect(cards).toHaveCount(8);
+  const xs = await cards.evaluateAll((els) => els.map((e) => Math.round(e.getBoundingClientRect().left)));
+  expect(new Set(xs).size, 'todas las tarjetas alineadas en una sola columna').toBe(1);
 
   await page.locator('.header__mega-model', { hasText: 'Tiggo 8 Pro' }).click();
   await expect(page.locator('.header__nav')).not.toHaveClass(/is-open/);
