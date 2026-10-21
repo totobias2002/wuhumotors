@@ -192,7 +192,8 @@ export default {
           "cpad": "10px 10px 0 10px",
           "cmr": "30px",
           "gpad": "25px 10px 11px 10px",
-          "logoW": 174
+          "logoW": 174,
+          "pmb": -11
         },
         "title": "Interior",
         "paras": [
@@ -207,6 +208,11 @@ export default {
         "ink": "dark"
       },
       {
+        "type": "band",
+        "player": "https://chery.com.ar/wp-content/uploads/2026/01/TIGGO4_CSH_Video_Features-1.mp4",
+        "mobileOnly": true
+      },
+      {
         "type": "feature",
         "id": "diseno",
         "m": {
@@ -214,7 +220,8 @@ export default {
           "cpad": "60px 20px 0 20px",
           "cmr": "0px",
           "gpad": "75px 10px 11px 10px",
-          "logoW": 180
+          "logoW": 180,
+          "pmb": -11
         },
         "title": "Diseño",
         "paras": [
@@ -290,7 +297,8 @@ export default {
             "gap": 24,
             "w": 353,
             "side": 20,
-            "bottom": 40
+            "bottom": 40,
+            "ng": 30
           }
         },
         "brochure": "https://chery.com.ar/wp-content/uploads/2026/10/FICHA-TECNICA-TIGGO-4-PRO.pdf",
@@ -369,7 +377,8 @@ export default {
           "cpad": "10px 10px 0 10px",
           "cmr": "30px",
           "gpad": "25px 10px 10px 10px",
-          "logoW": 174
+          "logoW": 174,
+          "pmb": 26
         },
         "title": "Interior",
         "paras": [
@@ -395,7 +404,8 @@ export default {
           "cpad": "60px 20px 0 20px",
           "cmr": "0px",
           "gpad": "75px 10px 10px 10px",
-          "logoW": 180
+          "logoW": 180,
+          "pmb": 26
         },
         "title": "Diseño",
         "paras": [
@@ -482,7 +492,8 @@ export default {
             "gap": 24,
             "w": 353,
             "side": 20,
-            "bottom": 40
+            "bottom": 40,
+            "ng": 30
           }
         },
         "brochure": "https://chery.com.ar/wp-content/uploads/2026/10/MY26-TIGGO-4-CSH.pdf",

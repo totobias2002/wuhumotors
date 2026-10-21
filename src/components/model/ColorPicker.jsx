@@ -2,13 +2,13 @@ import { useState } from 'react';
 
 export default function ColorPicker({ colors, brochure, layout = {} }) {
   const { stage = [960, 488], top = 0, bottom = 60, slim, mt = 90, mb = 90, mobile = {} } = layout;
-  const mo = { top: 60, dot: 20, gap: -6, w: 373, side: 10, bottom: 0, ...mobile };
+  const mo = { top: 60, dot: 20, gap: -6, w: 373, side: 10, bottom: 0, ng: 0, ...mobile };
   const [i, setI] = useState(0);
   const c = colors[i];
   return (
     <section className={`mp-colors ${slim ? 'mp-colors--slim' : ''}`} style={{
         '--c-top': `${top}px`, '--c-bottom': `${bottom - 60}px`, '--c-mt': `${mt}px`, '--c-mb': `${mb}px`,
-        '--cm-top': `${mo.top}px`, '--cm-dot': `${mo.dot}px`, '--cm-gap': `${mo.gap}px`, '--cm-w': `${mo.w}px`, '--cm-side': `${mo.side}px`, '--cm-bottom': `${mo.bottom}px`,
+        '--cm-top': `${mo.top}px`, '--cm-dot': `${mo.dot}px`, '--cm-gap': `${mo.gap}px`, '--cm-w': `${mo.w}px`, '--cm-side': `${mo.side}px`, '--cm-bottom': `${mo.bottom}px`, '--cm-ng': `${mo.ng}px`,
       }}>
       <h2 className="mp-h2 mp-h2--center">Elegí tu color</h2>
       <div className="mp-colors__dots" role="tablist" aria-label="Color">

@@ -6,6 +6,7 @@ export const mVars = (m) =>
         '--m-cp': m.cpad,
         '--m-cmr': m.cmr,
         '--m-gp': m.gpad,
+        '--m-pmb': m.pmb !== undefined ? `${m.pmb}px` : undefined,
         '--m-logo-w': m.logoW ? `${m.logoW}px` : undefined,
       }
     : undefined;

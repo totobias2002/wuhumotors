@@ -3,7 +3,7 @@
 export default function VideoBand({ band }) {
   if (band.player) {
     return (
-      <section className="mp-band mp-band--player">
+      <section className={`mp-band mp-band--player ${band.mobileOnly ? 'mp-band--mobile-only' : ''}`}>
         <video src={band.player} controls playsInline preload="metadata" />
       </section>
     );
