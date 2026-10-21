@@ -145,7 +145,6 @@ export default function Header() {
                 <a href="#contacto" onClick={close}>Sin dudas</a>
               </div>
             </div>
-            <Link to={{ pathname: '/', hash: '#concesionarios' }} onClick={close}>Concesionarios</Link>
             <Link to={{ pathname: '/', hash: '#posventa' }} onClick={close}>Posventa</Link>
             <a href={PRICE_LIST_URL} target="_blank" rel="noopener noreferrer" onClick={close}>
               Lista de precios
