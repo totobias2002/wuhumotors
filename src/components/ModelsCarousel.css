@@ -1,15 +1,40 @@
 /* Replica de la seccion de modelos de chery.com.ar */
 .models {
-  padding: 36px 0 72px;
+  /* Ocupa toda la pantalla (menos el header fijo de 58px) y centra el contenido */
+  min-height: calc(100vh - 58px);
+  min-height: calc(100svh - 58px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 36px 0 48px;
   background: linear-gradient(180deg, #a5a3a0 0%, #dad4ce 100%);
   color: #403831;
   text-align: center;
 }
 
+/* Apila varios hijos en la misma celda: el alto lo da el mas alto y nunca cambia */
+.models__stack {
+  display: grid;
+  justify-items: center;
+}
+
+.models__stack > * {
+  grid-area: 1 / 1;
+}
+
+.models__titles {
+  align-items: center;
+  margin-bottom: 38px;
+}
+
 .models__title {
-  display: block;
   height: auto;
-  margin: 0 auto 38px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.models__title.is-active {
+  opacity: 1;
 }
 
 .models__lines {
@@ -39,10 +64,19 @@
   border-bottom-color: #403831;
 }
 
+.models__tabs-wrap {
+  align-items: start;
+}
+
 .models__tabs {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  visibility: hidden;
+}
+
+.models__tabs.is-active {
+  visibility: visible;
 }
 
 .models__tab {
@@ -88,6 +122,7 @@
 }
 
 .models__explore {
+  align-self: center;
   display: inline-block;
   margin-top: 28px;
   width: 270px;
@@ -111,8 +146,8 @@
 }
 
 @media (max-width: 540px) {
-  .models { padding-bottom: 56px; }
-  .models__title { transform: scale(0.8); margin-bottom: 24px; }
+  .models__titles { margin-bottom: 24px; }
+  .models__title { transform: scale(0.8); }
   .models__line { padding: 8px 14px 10px; }
   .models__tab { padding: 8px 10px; font-size: 0.72rem; }
 }
