@@ -202,12 +202,30 @@
 
   .header__dropdown { flex-direction: column; width: 100%; }
 
+  /* Submenu: sangrado, con linea de acento a la izquierda y cada opcion bien separada */
   .header__dropdown-menu {
     position: static;
     transform: none;
-    padding: 8px 0 0 12px;
     min-width: 0;
+    margin: 4px 0 12px 6px;
+    padding: 0 0 0 16px;
+    border-left: 2px solid #a3896c;
   }
 
-  .header__dropdown-menu a { background: none; border: none; padding: 6px 0; font-weight: 500; }
+  .header__dropdown-menu a {
+    display: block;
+    background: none;
+    padding: 13px 0;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: #403831;
+    border-bottom: 1px solid rgba(64, 56, 49, 0.12);
+  }
+
+  .header__dropdown-menu a:last-child { border-bottom: none; }
+  .header__dropdown-menu a:hover { background: none; color: #000; }
+
+  /* La flechita gira cuando el submenu esta abierto */
+  .header__caret { transition: transform 0.2s ease; }
+  .header__dropdown.is-open .header__caret { transform: rotate(180deg); }
 }
