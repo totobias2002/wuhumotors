@@ -22,7 +22,6 @@ export default function Footer() {
             <Link key={m.id} to={modelPath(m)}>{m.name.toUpperCase()}</Link>
           ))}
           <Link to={{ pathname: '/', hash: '#posventa' }}>Posventa</Link>
-          <Link to={{ pathname: '/', hash: '#concesionarios' }}>Concesionarios</Link>
           <a href="#contacto">Contacto</a>
         </div>
 
@@ -51,7 +50,7 @@ export default function Footer() {
       </div>
 
       <div className="container footer__bottom">
-        <span>Wuhu Motors S.A. Concesionario Oficial de ZTY Motors Red Chery · CUIT 30-71917302-7</span>
+        <span>Wuhu Motors S.A. · Red Chery · CUIT 30-71917302-7</span>
         <span>Copyright ©{YEAR} | Todos los derechos reservados</span>
       </div>
 

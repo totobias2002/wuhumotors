@@ -1,6 +1,6 @@
 .split-panel {
   display: grid;
-  /* Chery: foto 60% / texto 40% (Posventa); texto 40% / foto 60% (Concesionarios) */
+  /* Chery: foto 60% / texto 40% (Posventa) */
   grid-template-columns: 3fr 2fr;
   min-height: 45vh;
   background: #4a453f;

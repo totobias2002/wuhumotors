@@ -19,7 +19,7 @@ export default function ModelPage() {
   useEffect(() => {
     if (data) document.title = `Chery ${data.name} | Wuhu Motors`;
     return () => {
-      document.title = 'Wuhu Motors | Concesionario Oficial Chery';
+      document.title = 'Wuhu Motors | Chery';
     };
   }, [data]);
 

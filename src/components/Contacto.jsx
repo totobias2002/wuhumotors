@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { models } from '../data/models';
-import { SUCURSALES } from '../data/sucursales';
 import './Contacto.css';
 
 const CONTACT_EMAIL = 'contacto@wuhumotors.com.ar';
@@ -37,7 +36,6 @@ export default function Contacto({ modelName = '' }) {
       `Nombre: ${data.nombre} ${data.apellido}`,
       `Teléfono: ${data.telefono}`,
       `Email: ${data.email}`,
-      `Concesionario: ${data.concesionario}`,
       `Modelo: ${data.modelo}`,
       '',
       data.mensaje,
@@ -64,14 +62,6 @@ export default function Contacto({ modelName = '' }) {
           <input name="apellido" type="text" placeholder="Apellido" required />
           <input name="telefono" type="tel" placeholder="Teléfono" required pattern="[0-9()#&+*\-=. ]+" />
           <input name="email" type="email" placeholder="Email" required />
-          <select name="concesionario" required defaultValue="">
-            <option value="" disabled>Elegir Concesionario</option>
-            {SUCURSALES.map((s) => (
-              <option key={s.name} value={`${s.name} - WUHU`}>
-                {`${s.name} - WUHU`.toUpperCase()}
-              </option>
-            ))}
-          </select>
           {modelName ? (
             <input type="hidden" name="modelo" value={modelName} />
           ) : (

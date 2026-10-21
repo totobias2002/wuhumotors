@@ -7,7 +7,7 @@ export default function ModelSoon({ model }) {
   useEffect(() => {
     document.title = `Chery ${model.name} | Wuhu Motors`;
     return () => {
-      document.title = 'Wuhu Motors | Concesionario Oficial Chery';
+      document.title = 'Wuhu Motors | Chery';
     };
   }, [model]);
 
