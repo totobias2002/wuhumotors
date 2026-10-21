@@ -8,12 +8,13 @@ const CONTACT_EMAIL = 'contacto@wuhumotors.com.ar';
 // si no, abre el cliente de mail con los datos cargados.
 const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT;
 
-export default function Contacto() {
+export default function Contacto({ modelName = '' }) {
   const [status, setStatus] = useState('idle');
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.currentTarget));
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form));
 
     if (ENDPOINT) {
       setStatus('sending');
@@ -25,7 +26,7 @@ export default function Contacto() {
         });
         if (!res.ok) throw new Error(res.status);
         setStatus('sent');
-        e.currentTarget.reset();
+        form.reset();
       } catch {
         setStatus('error');
       }
@@ -48,14 +49,14 @@ export default function Contacto() {
 
   return (
     <section id="contacto" className="contacto">
-      <div className="container contacto__inner">
+      <div className="contacto__inner">
         <h2 className="contacto__title reveal">
-          Sin dudas, tu próximo Chery{' '}
+          Sin dudas, <strong>tu próximo Chery</strong>
           <br />
           está cada vez más cerca.
         </h2>
         <p className="contacto__lead reveal reveal-delay-1">
-          Completá el siguiente formulario y nos pondremos en contacto con vos.
+          Completá el siguiente formulario y nos pondremos en contacto a la brevedad
         </p>
 
         <form className="contacto__form reveal reveal-delay-2" onSubmit={onSubmit}>
@@ -71,12 +72,16 @@ export default function Contacto() {
               </option>
             ))}
           </select>
-          <select name="modelo" defaultValue="">
-            <option value="">Elegir Modelo</option>
-            {[...models].sort((a, b) => a.name.localeCompare(b.name)).map((m) => (
-              <option key={m.id} value={m.name}>{m.name.toUpperCase()}</option>
-            ))}
-          </select>
+          {modelName ? (
+            <input type="hidden" name="modelo" value={modelName} />
+          ) : (
+            <select name="modelo" defaultValue="">
+              <option value="">Elegir Modelo</option>
+              {[...models].sort((a, b) => a.name.localeCompare(b.name)).map((m) => (
+                <option key={m.id} value={m.name}>{m.name.toUpperCase()}</option>
+              ))}
+            </select>
+          )}
           <textarea name="mensaje" placeholder="Mensaje" rows={4} />
           <button type="submit" disabled={status === 'sending'}>
             {status === 'sending' ? 'Enviando…' : 'Enviar'}

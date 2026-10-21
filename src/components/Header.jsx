@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo-cherywuhu.png';
 import { models, modelLines, PRICE_LIST_URL } from '../data/models';
-import { selectModel } from '../utils/selectModel';
+import { modelHref } from '../data/modelPages';
 import './Header.css';
 
 export default function Header() {
@@ -19,12 +20,6 @@ export default function Header() {
   const close = () => {
     setMenuOpen(false);
     setOpenMenu(null);
-  };
-
-  const pickModel = (e, id) => {
-    e.preventDefault();
-    close();
-    selectModel(id);
   };
 
   // Menu movil (mismo criterio que el de BAIC): con el panel abierto se congela el fondo.
@@ -71,9 +66,9 @@ export default function Header() {
   return (
     <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
       <div className="header__inner">
-        <a href="#inicio" className="header__logo" onClick={close}>
+        <Link to="/" className="header__logo" onClick={close}>
           <img src={logo} alt="Wuhu Motors - Chery" />
-        </a>
+        </Link>
 
         <nav className={`header__nav ${menuOpen ? 'is-open' : ''}`}>
           {/* El slide-in vive en <nav> y el scroll tactil en este wrapper (evita un bug de iOS con transform + overflow). */}
@@ -120,12 +115,24 @@ export default function Header() {
                       <div className="header__mega-models">
                         {models
                           .filter((m) => m.line === l.id)
-                          .map((m) => (
-                            <a key={m.id} href="#modelos" className="header__mega-model" onClick={(e) => pickModel(e, m.id)}>
-                              <img src={m.image} alt="" loading="lazy" />
-                              <span>{m.name}</span>
-                            </a>
-                          ))}
+                          .map((m) => {
+                            const target = modelHref(m);
+                            const card = (
+                              <>
+                                <img src={m.image} alt="" loading="lazy" />
+                                <span>{m.name}</span>
+                              </>
+                            );
+                            return target.to ? (
+                              <Link key={m.id} to={target.to} className="header__mega-model" onClick={close}>
+                                {card}
+                              </Link>
+                            ) : (
+                              <a key={m.id} href={target.href} target="_blank" rel="noopener noreferrer" className="header__mega-model" onClick={close}>
+                                {card}
+                              </a>
+                            );
+                          })}
                       </div>
                     </div>
                   ))}
@@ -153,8 +160,8 @@ export default function Header() {
                 <a href="#contacto" onClick={close}>Sin dudas</a>
               </div>
             </div>
-            <a href="#concesionarios" onClick={close}>Concesionarios</a>
-            <a href="#posventa" onClick={close}>Posventa</a>
+            <Link to={{ pathname: '/', hash: '#concesionarios' }} onClick={close}>Concesionarios</Link>
+            <Link to={{ pathname: '/', hash: '#posventa' }} onClick={close}>Posventa</Link>
             <a href={PRICE_LIST_URL} target="_blank" rel="noopener noreferrer" onClick={close}>
               Lista de precios
             </a>

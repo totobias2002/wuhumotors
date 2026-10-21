@@ -119,21 +119,19 @@ test('el menu movil abre y cierra con la hamburguesa y deja el logo visible', as
   await expect(nav).not.toHaveClass(/is-open/);
 });
 
-test('menu Modelos (escritorio): panel con lineas y, al elegir un modelo, baja a la seccion con ese modelo', async ({ page }) => {
+test('menu Modelos (escritorio): panel con lineas y, al elegir Tiggo 8 Pro, abre su pagina', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   await page.locator('.header__dropdown--mega > .header__dropdown-toggle').hover();
   await expect(page.locator('.header__mega')).toBeVisible();
 
-  await page.getByRole('tab', { name: 'Arrizo', exact: true }).first().hover();
-  await page.locator('.header__mega-group.is-active .header__mega-model', { hasText: 'Arrizo 8 CSH' }).click();
-
-  await expect(page.locator('.models__tab.is-active').filter({ hasText: 'Arrizo 8 CSH' })).toBeVisible();
+  await page.locator('.header__mega-group.is-active .header__mega-model', { hasText: 'Tiggo 8 Pro' }).click();
+  await expect(page).toHaveURL(/\/tiggo-8-pro$/);
+  await expect(page.locator('.mp-hero__logo')).toBeVisible();
   await expect(page.locator('.header__mega')).toBeHidden();
-  await expect.poll(async () => Math.round(await page.locator('#modelos').evaluate((e) => e.getBoundingClientRect().top))).toBeLessThan(HEADER_H + 4);
 });
 
-test('menu Modelos (celular): tarjetas en una columna y al elegir un modelo baja a la seccion', async ({ page }) => {
+test('menu Modelos (celular): tarjetas en una columna y al elegir un modelo abre su pagina', async ({ page }) => {
   await page.setViewportSize({ width: 393, height: 852 });
   await page.goto('/');
   await page.locator('.header__toggle').click();
@@ -146,7 +144,21 @@ test('menu Modelos (celular): tarjetas en una columna y al elegir un modelo baja
   expect(new Set(xs).size, 'todas las tarjetas alineadas en una sola columna').toBe(1);
 
   await page.locator('.header__mega-model', { hasText: 'Tiggo 8 Pro' }).click();
+  await expect(page).toHaveURL(/\/tiggo-8-pro$/);
   await expect(page.locator('.header__nav')).not.toHaveClass(/is-open/);
-  await expect(page.locator('.models__tab.is-active').filter({ hasText: 'Tiggo 8 Pro' })).toBeVisible();
-  await expect.poll(async () => Math.round(await page.locator('#modelos').evaluate((e) => e.getBoundingClientRect().top))).toBeLessThan(HEADER_H + 4);
+});
+
+test('pagina de modelo: sin scroll horizontal en celular y escritorio', async ({ page }) => {
+  for (const [w, h] of [[320, 640], [393, 852], [768, 1024], [1440, 900]]) {
+    await page.setViewportSize({ width: w, height: h });
+    await page.goto('/tiggo-8-pro');
+    await page.waitForSelector('.mp-hero');
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow, `scroll horizontal a ${w}px`).toBe(0);
+  }
+});
+
+test('una ruta desconocida vuelve al inicio', async ({ page }) => {
+  await page.goto('/no-existe');
+  await expect(page).toHaveURL(/\/$/);
 });

@@ -1,0 +1,238 @@
+/* Paginas de modelo - replica de chery.com.ar (medidas tomadas de la pagina original a 1440px) */
+.mp {
+  --tan: #a3896c;
+  --brown: #4b423d;
+  --panel: #dbdcd7;
+  padding-top: var(--header-h);
+  background: #fff;
+  color: var(--brown);
+  font-family: 'Poppins', sans-serif;
+}
+
+.mp-anchor { display: block; height: 0; }
+
+/* ---- Tipografia y botones ---- */
+.mp-h2 { font-size: 35px; font-weight: 600; line-height: 35px; color: var(--brown); }
+.mp-h2--center { text-align: center; }
+.mp-divider { display: block; width: 56px; height: 2px; background: var(--tan); }
+.mp-p { margin: 0 0 14.4px; font-size: 15px; font-weight: 400; line-height: 22.5px; color: var(--brown); }
+.mp-p b { font-weight: 700; }
+
+.mp-btn {
+  display: inline-block;
+  padding: 15px 38px;
+  background: var(--tan);
+  border: 1px solid var(--tan);
+  border-radius: 5px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 15px;
+  text-align: center;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.mp-btn:hover { background: #8d7458; border-color: #8d7458; }
+.mp-btn--sm { padding: 15px 25px; font-size: 13px; font-weight: 300; line-height: 13px; }
+.mp-btn--ghost { background: transparent; }
+.mp-btn--ghost:hover { background: rgba(163, 137, 108, 0.35); border-color: var(--tan); }
+
+/* ---- Hero ---- */
+.mp-hero {
+  position: relative;
+  min-height: calc(100vh - var(--header-h));
+  min-height: calc(100svh - var(--header-h));
+  background: #000;
+  overflow: hidden;
+}
+
+.mp-hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.mp-hero__inner {
+  position: relative;
+  z-index: 1;
+  padding: 58px 60px 0;
+  text-align: center;
+}
+
+.mp-hero__logo { display: inline-block; width: 422px; max-width: 100%; height: auto; }
+.mp-hero__features { display: none; }
+
+.mp-hero__bar {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 31px;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: start;
+  gap: 20px;
+  padding: 0 40px;
+}
+
+.mp-hero__item { display: flex; gap: 8px; color: #fff; }
+.mp-icon { flex: none; display: block; width: 30px; height: 30px; }
+.mp-icon svg { display: block; width: 30px; height: 30px; fill: #fff; }
+/* El icono de garantia esta dibujado con trazos (stroke), no con relleno */
+.mp-icon--stroke svg { fill: none; }
+.mp-hero__item-text { margin: 8px 0 16px; font-size: 15px; font-weight: 300; line-height: 17px; }
+.mp-hero__cta--features { grid-column: 6; justify-self: start; }
+.mp-hero__cta--sheet { grid-column: 7; justify-self: start; }
+
+/* ---- Texto + galeria (Interior / Seguridad) ---- */
+.mp-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  column-gap: 30px;
+  min-height: 600px;
+  padding: 0 60px;
+  background: var(--panel);
+}
+
+.mp-split__copy,
+.mp-tech__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.mp-split--reverse .mp-split__copy { order: 2; }
+.mp-split--reverse .mp-gallery { order: 1; }
+
+.mp-split__cta { display: grid; grid-template-columns: 210px 210px; align-items: center; }
+.mp-split__cta .mp-btn { justify-self: start; }
+.mp-split__logo { display: block; width: 210px; height: auto; }
+
+.mp-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 10px;
+}
+
+.mp-gallery__item { display: block; aspect-ratio: 3 / 2; overflow: hidden; background: #cfd0cb; }
+.mp-gallery__item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.mp-gallery__item:hover img { transform: scale(1.04); }
+
+/* ---- Franja de video / foto ---- */
+.mp-band { height: 100vh; min-height: 480px; background: #000; overflow: hidden; }
+.mp-band video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.mp-band--image { display: none; background-size: cover; background-position: center; }
+
+/* ---- Tecnologia ---- */
+.mp-tech {
+  display: flex;
+  align-items: center;
+  min-height: 600px;
+  padding: 0 60px;
+  background-color: var(--panel);
+  background-size: cover;
+  background-position: center;
+}
+
+.mp-tech__copy { width: 645px; max-width: 100%; margin-right: 30px; }
+
+/* ---- Carrusel de asistencias ---- */
+.mp-adas {
+  position: relative;
+  margin-top: -134px;
+  padding: 0 60px 4px;
+}
+
+.mp-adas__viewport { overflow: hidden; border-radius: 6px; }
+.mp-adas__track { display: flex; transition: transform 0.5s ease; }
+.mp-adas__slide { flex: 0 0 calc(100% / var(--pv)); margin: 0; padding: 0 5px; }
+.mp-adas__slide video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000; border-radius: 6px; }
+.mp-adas__slide figcaption { margin-top: 28px; padding-bottom: 28px; font-size: 15px; font-weight: 400; line-height: 1.4; color: var(--brown); text-transform: uppercase; }
+
+.mp-adas__arrow {
+  position: absolute;
+  top: 38%;
+  z-index: 2;
+  width: 32px;
+  height: 48px;
+  border: none;
+  background: none;
+  color: rgba(75, 66, 61, 0.7);
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.mp-adas__arrow--prev { left: 62px; }
+.mp-adas__arrow--next { right: 62px; }
+.mp-adas__arrow:hover { color: #4b423d; }
+
+.mp-adas__dots { display: flex; justify-content: center; margin-top: 4px; }
+.mp-adas__dots button { width: 6px; height: 6px; margin: 0 6px; padding: 0; border: none; border-radius: 50%; background: #c9c9c9; }
+.mp-adas__dots button.is-active { background: #000; }
+
+/* ---- Elegi tu color ---- */
+.mp-colors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 90px 0;
+  padding: 0 60px 55px;
+}
+
+.mp-colors__dots { display: flex; justify-content: center; flex-wrap: wrap; }
+.mp-colors__dot { padding: 15px 35px; background: none; border: none; }
+.mp-colors__dot span { display: block; width: 25px; height: 25px; border-radius: 50%; }
+.mp-colors__dot:focus-visible { outline: 2px solid var(--tan); border-radius: 8px; }
+
+.mp-colors__stage { position: relative; margin-top: 54px; width: 960px; max-width: 100%; aspect-ratio: 960 / 488; }
+.mp-colors__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.3s ease; }
+.mp-colors__stage img.is-active { opacity: 1; }
+.mp-colors__name { margin: 0; font-size: 25px; font-weight: 500; line-height: 1.2; color: #54595f; text-align: center; }
+.mp-colors__sheet { padding: 15px 38px; }
+
+/* ---- Tablet / celular (medidas de chery.com.ar a 393px) ---- */
+@media (max-width: 1024px) {
+  .mp-hero__bar { display: none; }
+  .mp-hero__features {
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    bottom: 238px;
+    transform: translateX(-50%);
+  }
+  .mp-hero__inner { padding: 58px 60px 0; }
+  .mp-hero__logo { width: 259px; }
+  .mp-band--video { display: none; }
+  .mp-band--image { display: block; }
+
+  /* Interior / Seguridad: texto arriba y galeria de 1 columna debajo */
+  .mp-split { display: block; padding: 60px 20px; min-height: 0; }
+  .mp-split__copy { margin-right: 30px; padding: 10px; }
+  .mp-divider { width: 27px; }
+  .mp-split__cta { grid-template-columns: 1fr; row-gap: 25px; }
+  .mp-split__cta .mp-btn { justify-self: start; }
+  .mp-split__logo { width: 100%; }
+  .mp-gallery { grid-template-columns: 1fr; padding: 0; }
+  .mp-split--reverse { padding: 60px 30px 0 20px; }
+  .mp-split--reverse .mp-split__copy { margin-right: 0; padding: 10px 20px; }
+  .mp-split--reverse .mp-split__cta { padding-bottom: 20px; }
+  .mp-split--reverse .mp-gallery { margin: 0 10px 10px; }
+
+  .mp-tech { padding: 60px 20px 80px 40px; min-height: 0; }
+  .mp-tech__copy { width: 100%; margin-right: 30px; max-width: 303px; }
+  .mp-adas { margin-top: 0; padding: 0 0 6px; }
+  .mp-adas__slide { padding: 0 10px; }
+  .mp-adas__slide figcaption { margin-top: 30px; padding-bottom: 48px; }
+  .mp-adas__arrow--prev { left: 6px; }
+  .mp-adas__arrow--next { right: 6px; }
+
+  .mp-colors { margin: 90px 0; padding: 60px 10px 0; }
+  .mp-colors__dot { padding: 20px; }
+  .mp-colors__stage { margin-top: -6px; width: 100%; }
+  .mp-colors__name { line-height: 25px; }
+}
+
+@media (max-width: 767px) {
+  .mp-hero__inner { padding: 58px 60px 0; }
+}

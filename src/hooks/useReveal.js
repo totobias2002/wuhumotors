@@ -6,7 +6,7 @@ import { useEffect } from 'react';
  * view, mirroring the fade/slide-up entrance chery.com.ar uses as you
  * scroll down the page.
  */
-export default function useReveal() {
+export default function useReveal(routeKey) {
   useEffect(() => {
     const els = document.querySelectorAll('.reveal:not(.is-visible)');
     if (!('IntersectionObserver' in window) || els.length === 0) {
@@ -28,5 +28,5 @@ export default function useReveal() {
 
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [routeKey]);
 }

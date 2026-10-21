@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo-cherywuhu.png';
 import { models } from '../data/models';
+import { modelHref } from '../data/modelPages';
 import './Footer.css';
 
 const YEAR = new Date().getFullYear();
@@ -15,14 +17,17 @@ export default function Footer() {
 
         <div className="footer__col">
           <h4>Menu</h4>
-          <a href="#inicio">Home</a>
-          {models.map((m) => (
-            <a key={m.id} href="#modelos">
-              {m.name.toUpperCase()}
-            </a>
-          ))}
-          <a href="#posventa">Posventa</a>
-          <a href="#concesionarios">Concesionarios</a>
+          <Link to="/">Home</Link>
+          {models.map((m) => {
+            const t = modelHref(m);
+            return t.to ? (
+              <Link key={m.id} to={t.to}>{m.name.toUpperCase()}</Link>
+            ) : (
+              <a key={m.id} href={t.href} target="_blank" rel="noopener noreferrer">{m.name.toUpperCase()}</a>
+            );
+          })}
+          <Link to={{ pathname: '/', hash: '#posventa' }}>Posventa</Link>
+          <Link to={{ pathname: '/', hash: '#concesionarios' }}>Concesionarios</Link>
           <a href="#contacto">Contacto</a>
         </div>
 
