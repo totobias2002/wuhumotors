@@ -149,5 +149,23 @@
   .models__titles { margin-bottom: 24px; }
   .models__title { transform: scale(0.8); }
   .models__line { padding: 8px 14px 10px; }
-  .models__tab { padding: 8px 10px; font-size: 0.72rem; }
+
+  /* Pestanas de modelo: 2 columnas, letra mas grande y mas aire para que se lean y se toquen bien */
+  .models__tabs {
+    gap: 4px 8px;
+    padding: 0 8px;
+  }
+
+  .models__tab {
+    flex: 0 0 calc(50% - 4px);
+    padding: 12px 6px;
+    font-size: 0.8125rem;
+    letter-spacing: 0.02em;
+    color: #5a534b;
+  }
+
+  .models__tab.is-active {
+    color: #2b2520;
+    font-weight: 500;
+  }
 }
