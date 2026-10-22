@@ -611,7 +611,7 @@ export default {
       },
       {
         "type": "band",
-        "video": "https://chery.com.ar/wp-content/uploads/2026/06/Chery-TIGGO-7-MHEV-con-ADAS-v6.mp4"
+        "video": "https://chery.com.ar/wp-content/uploads/2026/06/Chery-Tiggo-7-MHEV-con-ADAS-v6.mp4"
       },
       {
         "type": "feature",

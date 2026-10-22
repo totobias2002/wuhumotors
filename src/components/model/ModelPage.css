@@ -45,8 +45,8 @@
 }
 
 .mp-hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-/* Como en chery.com.ar, en escritorio el hero ocupa 100vh y arranca bajo el header */
-.mp-hero { --pull: 20px; margin-top: calc(-1 * (var(--header-h) + var(--pull))); min-height: 100vh; min-height: 100svh; }
+/* Como en chery.com.ar, en escritorio el hero arranca bajo el header y termina justo en el borde inferior de la ventana (no asoma la seccion siguiente) */
+.mp-hero { --pull: 20px; margin-top: calc(-1 * (var(--header-h) + var(--pull))); min-height: calc(100vh + var(--pull)); min-height: calc(100svh + var(--pull)); }
 @media (max-width: 1024px) { .mp-hero { --pull: 53px; } }
 
 .mp-hero__inner {
@@ -335,7 +335,7 @@
 }
 .mp-h2--soft { color: #756659; }
 .mp-p--center { text-align: center; color: #444; }
-.mp-photo { height: 630px; background-size: cover; background-position: center; }
+.mp-photo { height: 630px; background-repeat: no-repeat; background-size: auto; background-position: 50% 100%; }
 
 .mp-cards { padding: var(--cards-top, 170px) 107px var(--cards-bottom, 170px); background: #e1d7cb; }
 .mp-cards > * { max-width: 1140px; margin-left: auto; margin-right: auto; }

@@ -1,14 +1,14 @@
-// Gama y orden tal como figuran en el menu de chery.com.ar.
+// Orden pedido: Tiggo de mayor a menor, luego Arrizo y Himla.
 // `officialUrl` apunta a la ficha oficial hasta que existan las paginas propias.
 const OFFICIAL = 'https://chery.com.ar';
 
 export const models = [
-  { id: 'tiggo-2-pro-max', slug: 'tiggo-2-pro-max', line: 'tiggo', name: 'Tiggo 2 Pro Max', image: '/chery/models/tiggo2promax.png', officialUrl: `${OFFICIAL}/tiggo-2-pro-max/` },
-  { id: 'tiggo-4-pro', slug: 'tiggo-4-pro', line: 'tiggo', name: 'Tiggo 4 Pro', image: '/chery/models/tiggo4pro.webp', officialUrl: `${OFFICIAL}/tiggo-4-pro/` },
-  { id: 'tiggo-4-csh', slug: 'tiggo-4-hybrid', line: 'tiggo', name: 'Tiggo 4 CSH', image: '/chery/models/tiggo4hybrid.png', officialUrl: `${OFFICIAL}/tiggo-4-hybrid/` },
+  { id: 'tiggo-8-pro', slug: 'tiggo-8-pro', line: 'tiggo', name: 'Tiggo 8 Pro', image: '/chery/models/tiggo8pro.png', officialUrl: `${OFFICIAL}/tiggo-8-pro/` },
   { id: 'tiggo-7-pro-hybrid', slug: 'tiggo-7-pro-hybrid', line: 'tiggo', name: 'Tiggo 7 Pro Hybrid', image: '/chery/models/tiggo7prohybrid.png', officialUrl: `${OFFICIAL}/tiggo-7-pro-hybrid/` },
   { id: 'tiggo-7-csh', slug: 'tiggo-7-csh', line: 'tiggo', name: 'Tiggo 7 CSH', image: '/chery/models/tiggo7csh.png', officialUrl: `${OFFICIAL}/tiggo-7-csh/` },
-  { id: 'tiggo-8-pro', slug: 'tiggo-8-pro', line: 'tiggo', name: 'Tiggo 8 Pro', image: '/chery/models/tiggo8pro.png', officialUrl: `${OFFICIAL}/tiggo-8-pro/` },
+  { id: 'tiggo-4-pro', slug: 'tiggo-4-pro', line: 'tiggo', name: 'Tiggo 4 Pro', image: '/chery/models/tiggo4pro.webp', officialUrl: `${OFFICIAL}/tiggo-4-pro/` },
+  { id: 'tiggo-4-csh', slug: 'tiggo-4-hybrid', line: 'tiggo', name: 'Tiggo 4 CSH', image: '/chery/models/tiggo4hybrid.png', officialUrl: `${OFFICIAL}/tiggo-4-hybrid/` },
+  { id: 'tiggo-2-pro-max', slug: 'tiggo-2-pro-max', line: 'tiggo', name: 'Tiggo 2 Pro Max', image: '/chery/models/tiggo2promax.png', officialUrl: `${OFFICIAL}/tiggo-2-pro-max/` },
   { id: 'arrizo-8-csh', slug: 'arrizo8-csh', line: 'arrizo', name: 'Arrizo 8 CSH', image: '/chery/models/arrizo8csh.png', officialUrl: `${OFFICIAL}/arrizo8-csh/` },
   { id: 'himla', slug: 'himla', line: 'himla', name: 'Himla', image: '/chery/models/himla.webp', officialUrl: `${OFFICIAL}/himla/` },
 ];
